@@ -1,0 +1,148 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Percentages: Reading ``Per'' and ``Cent''}
+\begin{document}
+\begin{abstract}
+Building percentages up from the words themselves --- which English words signal which
+operation, what ``cent'' means, and why that makes $13\%$ equal to $\tfrac{13}{100}$.
+Then translating a ``portion is percent of whole'' sentence into an equation and
+solving it.
+\end{abstract}
+\maketitle
+
+\section*{Breaking Down the Word}
+
+Percentages are everywhere! They are used to describe discounts, markups, commissions,
+statistics, information, change, and on and on. They are an important topic and so we
+want to make sure that we really understand them. Let's start by just breaking down the
+word ``percent'': ``per'' and ``cent.''
+
+There are some specific words that often translate into certain mathematical
+operations. For example, if a question asks ``how many apples and oranges are there?''
+what operation are you going to do with the number of apples and oranges?
+
+\begin{problem}
+``and'' often translates to:
+\begin{multipleChoice}
+\choice[correct]{addition}
+\choice{subtraction}
+\choice{multiplication}
+\choice{division}
+\end{multipleChoice}
+
+``difference'' often translates to:
+\begin{multipleChoice}
+\choice{addition}
+\choice[correct]{subtraction}
+\choice{multiplication}
+\choice{division}
+\end{multipleChoice}
+
+``of'' often translates to:
+\begin{multipleChoice}
+\choice{addition}
+\choice{subtraction}
+\choice[correct]{multiplication}
+\choice{division}
+\end{multipleChoice}
+
+``per'' often translates to:
+\begin{multipleChoice}
+\choice{addition}
+\choice{subtraction}
+\choice{multiplication}
+\choice[correct]{division}
+\end{multipleChoice}
+
+``is'' often translates to:
+\begin{multipleChoice}
+\choice[correct]{equals}
+\choice{addition}
+\choice{multiplication}
+\choice{division}
+\end{multipleChoice}
+
+\begin{solution}
+``and'' signals addition, ``difference'' signals subtraction, ``of'' signals
+multiplication, ``per'' signals division, and ``is'' signals an equals sign. These five
+translations are enough to turn most percentage sentences directly into equations.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now ``cent.'' Where have we seen this word before? How many cents are in a dollar? How
+many years are in a century? How many centimeters are in a meter?
+
+Wherever you see the word ``cent,'' it is likely representing the number
+$\answer{100}$.
+
+\begin{solution}
+100 cents in a dollar, 100 years in a century, 100 centimeters in a meter. ``Cent''
+means 100.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Putting the two halves together: ``per'' means division and ``cent'' means 100, so
+``percent'' can be interpreted as \emph{divided by 100}. This is why
+\[
+13\% \;=\; \frac{\answer{13}}{\answer{100}} \;=\; 0.13
+\]
+
+\begin{solution}
+``Percent'' is literally ``per hundred,'' that is, divided by 100. So $13\%$ is
+$\tfrac{13}{100}$, which as a decimal is $0.13$.
+\end{solution}
+\end{problem}
+
+\section*{Turning a Sentence into an Equation}
+
+This is also why ``$13\%$ of 200 is 26.'' Translate each piece:
+
+\begin{center}
+$13\% \;\to\; 0.13$ \qquad $\text{of} \;\to\; \times$ \qquad $200 \;\to\; 200$
+\qquad $\text{is} \;\to\; =$ \qquad $26 \;\to\; 26$
+\end{center}
+
+Making ``$13\%$ of 200 is 26'' become the equation $0.13 \times 200 = 26$.
+
+\begin{problem}
+After a garage sale, you see that $35\%$ of what was sold was old records. If 14
+records were sold, how many total items were sold at the sale?
+
+To answer this question, we should take the values we know and write them in the
+phrasing \emph{(portion) is (\%) of (whole)}. Filling in what we know:
+
+$\answer{14}$ is $\answer{35}\%$ of (unknown).
+
+\begin{solution}
+14 records is the portion, $35\%$ is the percent, and the total number of items sold is
+the whole --- which is what we are missing.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now write that \emph{(portion) is (\%) of (whole)} sentence as a mathematical equation,
+putting an $x$ in for the unknown. Then solve for $x$ and write a sentence about what
+this value means in terms of the original question.
+
+There were $\answer{40}$ total items sold at the sale.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Translating word by word, ``14 is $35\%$ of $x$'' becomes
+\[
+14 = 0.35 \cdot x.
+\]
+Solving,
+\[
+x = \frac{14}{0.35} = 40.
+\]
+So 40 items were sold at the garage sale in total. Checking against the context: $35\%$
+of 40 is $0.35 \cdot 40 = 14$, which matches the 14 records that were sold.
+\end{solution}
+\end{problem}
+
+\end{document}

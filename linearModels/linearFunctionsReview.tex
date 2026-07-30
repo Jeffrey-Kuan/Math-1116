@@ -1,0 +1,99 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Review of Linear Functions}
+\begin{document}
+\begin{abstract}
+A recall check on $y = mx + b$: what the slope and intercept are, how slope relates to
+rise over run, and which coordinate is zero at each intercept.
+\end{abstract}
+\maketitle
+
+\section*{Review of Linear Functions}
+
+Let's remind ourselves of what ``linear'' means. A linear function can be expressed in
+the form $y = mx + b$. Linear functions do not always have to be in this form, but it
+is the most common representation. Let's remind ourselves of what the ``pieces'' in
+this expression mean.
+
+\begin{problem}
+In $y = mx + b$, the value $m$ is:
+\begin{multipleChoice}
+\choice[correct]{the slope of the line}
+\choice{the $y$-intercept of the line}
+\choice{the $x$-intercept of the line}
+\choice{the value of $y$ when $x = 1$}
+\end{multipleChoice}
+
+You may have learned this as a fraction. That fraction is:
+\begin{multipleChoice}
+\choice[correct]{$\dfrac{\text{rise}}{\text{run}}$}
+\choice{$\dfrac{\text{run}}{\text{rise}}$}
+\choice{$\dfrac{\text{change in } x}{\text{change in } y}$}
+\end{multipleChoice}
+
+\begin{solution}
+$m$ is the slope, commonly remembered as $\dfrac{\text{rise}}{\text{run}}$ --- the
+change in the vertical direction divided by the change in the horizontal direction.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Remember that \emph{rise} is a change in which values?
+\begin{multipleChoice}
+\choice[correct]{the $y$-values}
+\choice{the $x$-values}
+\end{multipleChoice}
+
+And \emph{run} is a change in which values?
+\begin{multipleChoice}
+\choice{the $y$-values}
+\choice[correct]{the $x$-values}
+\end{multipleChoice}
+
+\begin{solution}
+Rise is the change in $y$-values (vertical movement); run is the change in $x$-values
+(horizontal movement). So
+\[
+m = \frac{\text{rise}}{\text{run}} = \frac{\text{change in } y}{\text{change in } x}.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+In $y = mx + b$, the value $b$ is:
+\begin{multipleChoice}
+\choice[correct]{the $y$-intercept}
+\choice{the $x$-intercept}
+\choice{the slope}
+\end{multipleChoice}
+
+Graphically, this is the point where the line crosses the $y$-axis, and this occurs
+when $x = \answer{0}$.
+
+\begin{solution}
+$b$ is the $y$-intercept: the point where the line crosses the $y$-axis. A point is on
+the $y$-axis exactly when its $x$-coordinate is 0, so substituting $x = 0$ into
+$y = mx + b$ gives $y = b$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+It may also be helpful to remember the \emph{other} intercept. Graphically, the
+$x$-intercept is the point where the line crosses the $x$-axis, and this occurs when
+$y = \answer{0}$.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The $x$-intercept is where the line crosses the $x$-axis, which happens exactly when
+the $y$-coordinate is 0. To find it, set $y = 0$ and solve $0 = mx + b$ for $x$, giving
+$x = -\tfrac{b}{m}$.
+
+Notice the symmetry worth holding onto: at the $y$-intercept $x$ is zero, and at the
+$x$-intercept $y$ is zero. It is easy to mix these up, so it is worth reasoning from
+``which axis am I on?'' rather than memorising.
+\end{solution}
+\end{problem}
+
+\end{document}

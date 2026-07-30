@@ -1,0 +1,286 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Other Tiered Systems}
+\begin{document}
+\begin{abstract}
+Federal income tax is not the only thing structured in tiers. Comparing electricity
+rates, Pell Grant contributions, and USPS shipping against the tax schedule reveals two
+genuinely different designs --- one where a rate applies only to the amount above a
+threshold, and one where crossing a threshold re-prices everything.
+\end{abstract}
+\maketitle
+
+Federal income taxes are not the only things structured in this tiered way. Let's look
+at some other contexts of tiered systems and see how they compare to the taxes system.
+
+\section*{Electrical Use}
+
+Below is a table of Columbus electricity rates.
+
+\schedhead{DOP Electricity Rates, Effective May 1, 2025}
+
+\begin{center}
+\begin{tabular}{|l|p{5.6cm}|c|c|}
+\hline
+\textbf{Rate} & \textbf{Description} & \textbf{Customer charge} & \textbf{Energy per kWh} \\
+\hline
+\textbf{KW10} Residential Schedule A
+& Applicable to residential users with \textbf{summer usage exceeding 700 kWh in any
+month}.
+& \$11.25 & \$0.11267 \\
+\hline
+\textbf{KW11} Residential Schedule A-1 (Small User)
+& Applicable to residential users with \textbf{summer usage less than 700 kWh in any
+month}.
+& \$11.25 & \$0.09892 \\
+\hline
+\end{tabular}
+\end{center}
+
+{\footnotesize\url{https://www.columbus.gov/files/sharedassets/city/v/10/services/public-utilities/dop-rates.pdf}}
+
+\begin{problem}
+What is the maximum amount a ``small user'' can be charged in a month? Remember to
+explain how and why you determined this.
+
+About \$$\answer[tolerance=0.5]{80.40}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+A small user is one whose usage stays \emph{below} 700 kWh, so the largest bill comes
+from the largest qualifying usage --- just under 700 kWh. Taking 699 kWh:
+\[
+\$11.25 + \$0.09892 \cdot 699 = \$11.25 + \$69.15 = \$80.40.
+\]
+The \$11.25 customer charge is fixed and applies no matter how little you use, so the
+bill is a flat fee plus a per-kWh charge.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What is the minimum amount a ``normal'' user can be charged in a month? Remember to
+explain how and why you determined this.
+
+About \$$\answer[tolerance=0.5]{90.23}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+A normal user is one whose usage \emph{exceeds} 700 kWh, so the smallest bill comes from
+the smallest qualifying usage --- just over 700 kWh. Taking 701 kWh:
+\[
+\$11.25 + \$0.11267 \cdot 701 = \$11.25 + \$78.98 = \$90.23.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How do these minimum and maximum values compare? How is this different from the tax
+brackets?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The most a small user can be billed is about \$80.40, and the least a normal user can be
+billed is about \$90.23. So there is a \textbf{gap of about \$9.84}: no residential
+customer can receive a summer bill between those two amounts. The bill jumps
+discontinuously as usage crosses 700 kWh.
+
+This is fundamentally different from the tax brackets, and the difference is worth
+stating precisely. In the tax schedule, crossing a bracket boundary changes the rate
+applied to the \emph{additional} income only --- everything below the boundary keeps
+being taxed the way it was. The result is continuous: an extra dollar of income never
+causes a jump in tax owed.
+
+Here, crossing 700 kWh re-prices \emph{every} kWh, from the first one, at the higher
+rate of \$0.11267 instead of \$0.09892. Using one more kWh --- going from 699 to 701 ---
+increases the bill by nearly \$10.
+
+The practical consequence is real: a household at 699 kWh who turns on one more
+appliance is worse off than before in a way that a taxpayer receiving a raise never is.
+This kind of threshold is often called a \emph{cliff}, and it is exactly the thing people
+mistakenly fear about tax brackets --- it just happens to be true here rather than there.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If someone was charged \$95.00 for electric use in a given month, are they a small user
+or a normal user? How much electricity did they use?
+
+About $\answer[tolerance=10]{743}$ kWh.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Test both possibilities and see which one is self-consistent.
+
+\emph{If they were a normal user}, then
+\[
+\$95.00 = \$11.25 + \$0.11267 \cdot k
+\quad\Longrightarrow\quad
+k = \frac{\$83.75}{\$0.11267} \approx 743.3 \text{ kWh}.
+\]
+That is above 700, which is exactly what being a normal user requires. Consistent.
+
+\emph{If they were a small user}, then
+\[
+k = \frac{\$83.75}{\$0.09892} \approx 846.6 \text{ kWh},
+\]
+which is above 700 --- contradicting the requirement that a small user stay below 700.
+So this case is impossible.
+
+They are a normal user who used about 743 kWh. Notice the method: because the two rates
+describe non-overlapping usage ranges, you assume one, solve, and check whether the
+answer lands in the range that assumption requires.
+\end{solution}
+\end{problem}
+
+\section*{Pell Grants}
+
+Pell Grants are grants, not loans, meaning they do not have to be repaid. They are
+awarded to undergraduate students to aid them in paying for college tuition. As with
+taxes, we will make many assumptions to work past the various complicating factors. We
+assume we are looking at a Pell Grant for a dependent student. After completing a
+questionnaire about family income, it eventually comes to a table where an amount to be
+paid by the parents is determined based on the Adjusted Available Income (AAI).
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{If the parents' AAI is} & \textbf{Then the parents' contribution from AAI is} \\
+\hline
+Less than $-$\$6,820      & $-$\$1,500 \\
+\hline
+$-$\$6,820 to \$20,600    & $22\%$ of AAI \\
+\hline
+\$20,601 to \$25,800      & \$4,532 plus $25\%$ of AAI over \$20,600 \\
+\hline
+\$25,801 to \$31,000      & \$5,832 plus $29\%$ of AAI over \$25,800 \\
+\hline
+\$31,001 to \$36,300      & \$7,340 plus $34\%$ of AAI over \$31,000 \\
+\hline
+\$36,301 to \$41,500      & \$9,142 plus $40\%$ of AAI over \$36,300 \\
+\hline
+\$41,501 or more          & \$11,222 plus $47\%$ of AAI over \$41,500 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{problem}
+If a parents' AAI is \$20,600, how much would their contribution be, according to this
+table?
+
+\$$\answer{4532}$
+
+\begin{solution}
+\$20,600 sits at the top of the second row, so the contribution is $22\%$ of AAI:
+\[
+0.22 \cdot \$20{,}600 = \$4{,}532.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Is this the same set up as with taxes?
+
+\begin{multipleChoice}
+\choice[correct]{Yes --- each row charges a base amount plus a rate on only the amount above the threshold, exactly like the tax schedule.}
+\choice{No --- crossing a threshold re-prices the entire AAI, like the electricity rates.}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Yes, this is the same structure as the tax schedule --- and you can verify it with the
+same continuity check we used to find blanks A, B, and C.
+
+The third row reads ``\$4,532 plus $25\%$ of AAI over \$20,600.'' That base of \$4,532 is
+precisely the contribution we just computed at the top of the previous row. So the base
+amount in each row is the total contribution accumulated from all the rows below it,
+exactly as in the tax schedule.
+
+Because of that, the contribution rises continuously: a family whose AAI increases by a
+dollar never sees their expected contribution jump. Compare this with the electricity
+rates, where crossing 700 kWh produced a \$9.84 discontinuity.
+
+One small difference in presentation: this table uses whole-dollar boundaries (\$20,600
+then \$20,601) rather than the tax schedule's ``over\ldots but not over'' phrasing.
+That is a cosmetic difference in how the rows are written, not a difference in how the
+system behaves.
+\end{solution}
+\end{problem}
+
+\section*{Shipping Rates}
+
+First Class shipping rates with USPS, by weight and zone:
+
+\begin{center}
+{\small\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Weight} & \textbf{Zones 1 \& 2} & \textbf{Zone 3} & \textbf{Zone 4} & \textbf{Zone 5}
+& \textbf{Zone 6} & \textbf{Zone 7} & \textbf{Zone 8} & \textbf{Zone 9} \\
+\hline
+1--4 oz   & \$4.50 & \$4.60 & \$4.65 & \$4.70 & \$4.75 & \$4.80 & \$5.00 & \$5.00 \\
+\hline
+5--8 oz   & \$5.10 & \$5.15 & \$5.20 & \$5.25 & \$5.30 & \$5.40 & \$5.50 & \$5.50 \\
+\hline
+9--12 oz  & \$5.80 & \$5.85 & \$5.90 & \$5.95 & \$6.00 & \$6.15 & \$6.25 & \$6.25 \\
+\hline
+13 oz     & \$7.05 & \$7.10 & \$7.25 & \$7.30 & \$7.40 & \$7.55 & \$7.65 & \$7.65 \\
+\hline
+\end{tabular}}
+\end{center}
+
+{\footnotesize\url{https://www.usglobalmail.com/blog/usps-shipping-rates-by-weight-chart/}}
+
+Zones are different distances from the origin address:
+
+\begin{itemize}[nosep]
+\item Zone 1: Local shipping (within 50 miles).
+\item Zone 2: 51--150 miles.
+\item Zone 3: 151--300 miles.
+\item Zone 4: 301--600 miles.
+\item Zone 5: 601--1000 miles.
+\item Zone 6: 1001--1400 miles.
+\item Zone 7: 1401--1800 miles.
+\item Zone 8: 1801 miles or more.
+\item Zone 9: US territories, freely associated states, and some military addresses.
+\end{itemize}
+
+\begin{problem}
+Of the three systems in this activity --- electricity, Pell Grant contributions, and
+USPS shipping --- which behaves most like the federal tax schedule, and which behaves
+least like it? Explain what feature you are using to decide.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The Pell Grant table behaves most like the tax schedule: a base amount plus a rate
+applied only to the portion above a threshold, producing a continuous result.
+
+USPS shipping behaves least like it. The rate does not depend on the amount above a
+threshold at all --- every package from 1 to 4 oz costs the same \$4.50 to Zone 1,
+and then the price steps to \$5.10 the moment it hits 5 oz. There is no ``rate per
+ounce'' being applied to anything; the whole price is looked up from which block the
+weight falls in. This is a \emph{step function}.
+
+Electricity sits in between: like shipping, crossing the threshold re-prices everything
+rather than just the excess, so it has a cliff. But unlike shipping, the charge within
+each tier does still grow with usage at a per-kWh rate.
+
+The feature that distinguishes them is what the threshold does to the amount
+\emph{below} it. In the tax and Pell systems, income below a boundary keeps its old
+treatment. In the electricity and shipping systems, crossing a boundary changes how the
+entire quantity is priced --- which is what creates a jump.
+\end{solution}
+\end{problem}
+
+\end{document}

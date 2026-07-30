@@ -1,0 +1,941 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Probability}
+\begin{document}
+\begin{abstract}
+Probability as a count of favourable outcomes over total outcomes, complementary
+events, and the conditional probabilities that two-way tables make visible --- including
+why ``the chance a ticketed driver drives red'' is a different question from ``the chance
+a red-car driver gets ticketed.'' Then counting techniques, permutations versus
+combinations, experimental versus theoretical probability, and dependent versus
+independent events.
+\end{abstract}
+\maketitle
+
+\section*{Introduction to Probability}
+
+Probability is the likelihood of some instance or outcome occurring. To know how likely
+something is to occur, we need to know how many total options there are and then how
+many of those options fit the ``event'' --- what we call the instance we are looking to
+occur.
+
+Consider a dice-rolling scenario. The likelihood of rolling a ``1'' on a 6-sided die is
+$1/6$, as there are 6 total sides and only one of them is a ``1.'' So there is 1 option
+out of the 6 total options that fits the event we are looking for.
+
+This assumes all 6 options are equally likely. If the sides 3 and 4 were more likely to
+land face up for some reason --- a weighted or unfair die --- we would have to weight
+those probabilities higher, much as we did in the Means \& Medians activity with the
+averages of Wing Aero employees. You may assume all options are equally possible in the
+problems here.
+
+While we are often calculating a fraction or ratio for the probability, we prefer to
+write probabilities as percentages. So the likelihood of rolling a 1 on a 6-sided die is
+$1/6 = 0.1667$, which is a $16.67\%$ likelihood of occurring.
+
+What does that $16.67\%$ mean? It means that if we rolled a die 100 times, we would
+expect a ``1'' about 16.67 times. This does not mean it \emph{will} roll a ``1'' that
+many times --- in fact it cannot, since you can't have $0.67$ of a roll. But it gives us
+an idea of how likely something is, and expressing probabilities out of 100 lets us
+compare likelihoods against each other.
+
+\begin{problem}
+Find the probability that a randomly drawn card from a deck of cards is a King. Give
+your answer as a percentage rounded to two decimal places.
+
+$\answer[tolerance=0.1]{7.69}\%$
+
+\begin{solution}
+There are 4 Kings in a standard deck of 52 cards, so
+\[
+\frac{4}{52} = \frac{1}{13} = 0.0769\ldots \approx 7.69\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You have a bag containing 24 apples: eight are green and sixteen are red. If you pick an
+apple randomly, what is the probability that it will be red?
+
+$\answer[tolerance=0.1]{66.67}\%$
+
+\begin{solution}
+16 of the 24 apples are red, so
+\[
+\frac{16}{24} = \frac{2}{3} = 0.6667 \approx 66.67\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A 6-sided die is rolled once. What is the probability that you see a number bigger than
+4?
+
+$\answer[tolerance=0.1]{33.33}\%$
+
+\begin{solution}
+The numbers bigger than 4 are 5 and 6 --- two outcomes out of six:
+\[
+\frac{2}{6} = \frac{1}{3} = 0.3333 \approx 33.33\%.
+\]
+Note that ``bigger than 4'' excludes 4 itself. If the question had said ``4 or bigger''
+the answer would be $3/6 = 50\%$.
+\end{solution}
+\end{problem}
+
+\section*{Complementary Events}
+
+Complementary events are what we might think of as ``opposite'' events. There is a 1 in
+6 chance of rolling a ``1,'' which means there is a 5 out of 6 chance, $5/6 = 0.8333$, of
+NOT rolling a ``1.''
+
+The mathematical relationship between complementary events is that their probabilities
+always add to $100\%$. In our example, $1/6 + 5/6 = 16.67\% + 83.33\% = 100\%$.
+
+We can use this to our advantage. It is sometimes easier to calculate the complement of
+an event than the event itself --- if we know the probability of the complement, we
+subtract it from $100\%$ to find the probability of the original event.
+
+\begin{problem}
+The Ohio State football team had a preseason probability of $52.4\%$ to go over 10.5 wins
+in 2023. What was the preseason probability of going under 10.5 wins?
+
+$\answer[tolerance=0.1]{47.6}\%$
+
+\begin{solution}
+Going over 10.5 wins and going under 10.5 wins are complementary --- with a half-win
+threshold there is no possibility of landing exactly on it, so one or the other must
+happen. Therefore
+\[
+100\% - 52.4\% = 47.6\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+When two cards are drawn from a deck randomly without replacement, the probability of
+drawing a red card and an ace is $1/13$. What would be the complement to this event, and
+what would be its likelihood of occurring? Give your answer as a percentage.
+
+$\answer[tolerance=0.1]{92.31}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The complement is the event ``NOT drawing a red card and an ace'' --- that is, any
+outcome other than getting both a red card and an ace. Its probability is
+\[
+100\% - \frac{1}{13} = 100\% - 7.69\% = 92.31\%.
+\]
+
+Be careful with the wording here: the complement of ``a red card and an ace'' is not
+``a black card and a non-ace.'' The complement of an event is \emph{everything else},
+which includes drawing a red card without an ace, an ace that isn't red, and neither.
+\end{solution}
+\end{problem}
+
+\section*{Two-Way Tables and Conditional Probability}
+
+The table shows the number of drivers who received and did not receive a speeding ticket
+on a college campus over a three year period, and the colour of their car.
+
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+ & Received ticket & Did not receive ticket & Total \\
+\hline
+Red car & 18 & 162 & 180 \\
+Not a red car & 54 & 564 & 618 \\
+\hline
+Total & 72 & 726 & 798 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{problem}
+Determine the probability that a driver has a red car AND gets a speeding ticket. Write
+a sentence about what this percentage means.
+
+$\answer[tolerance=0.1]{2.26}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+18 drivers are in both categories, out of 798 drivers total:
+\[
+\frac{18}{798} = 0.02256 \approx 2.26\%.
+\]
+Meaning: of all the drivers on campus, about $2.26\%$ both drive a red car and got a
+ticket. The denominator is everybody.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability that a driver has a red car OR gets a speeding ticket. Write a
+sentence about what this percentage means.
+
+$\answer[tolerance=0.1]{29.32}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Add the red-car drivers and the ticketed drivers, then subtract the overlap so it is not
+counted twice:
+\[
+\frac{180 + 72 - 18}{798} = \frac{234}{798} = 0.29323 \approx 29.32\%.
+\]
+Meaning: about $29.32\%$ of drivers fall into at least one of the two categories.
+
+The subtraction matters. Without it you would get $\frac{252}{798} = 31.58\%$, which
+double-counts the 18 drivers who are in both groups.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability that a driver \emph{of a red car} gets a speeding ticket.
+Write a sentence about what this percentage means.
+
+$\answer[tolerance=0.1]{10}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Now we are only looking at red-car drivers, so the denominator is 180, not 798:
+\[
+\frac{18}{180} = 0.10 = 10\%.
+\]
+Meaning: among drivers of red cars, $10\%$ got a ticket.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability that a driver \emph{who gets a speeding ticket} has a red car.
+Write a sentence about what this percentage means.
+
+$\answer[tolerance=0.1]{25}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Now we are only looking at ticketed drivers, so the denominator is 72:
+\[
+\frac{18}{72} = 0.25 = 25\%.
+\]
+Meaning: among drivers who got a ticket, $25\%$ drove a red car.
+
+Compare this with the previous problem. Both use the same 18 drivers in the numerator,
+but they answer completely different questions because the denominators differ --- $10\%$
+of red-car drivers get ticketed, while $25\%$ of ticketed drivers drive red. Reversing
+which group you condition on can change the answer dramatically, and confusing the two is
+one of the most common errors in reading statistics.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How likely are you to get a speeding ticket while driving a red car, as opposed to
+another colour of car?
+
+\begin{multipleChoice}
+\choice{Significantly more likely}
+\choice[correct]{Slightly more likely}
+\choice{Equally likely}
+\choice{Slightly less likely}
+\choice{Significantly less likely}
+\end{multipleChoice}
+
+Support your choice by referencing two of the probabilities you calculated, and explain
+why you chose those two.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The two probabilities to compare are the chance of a ticket \emph{given} a red car and
+the chance of a ticket \emph{given} a non-red car:
+\[
+P(\text{ticket} \mid \text{red}) = \frac{18}{180} = 10\%,
+\qquad
+P(\text{ticket} \mid \text{not red}) = \frac{54}{618} = 8.74\%.
+\]
+$10\%$ against $8.74\%$ is a real difference but a small one, so \emph{slightly more
+likely} is the right answer.
+
+Why these two? Because the question asks about your risk of a ticket \emph{conditional on
+what colour car you drive}, so car colour has to be the thing held fixed in the
+denominator. The $25\%$ figure --- the share of ticketed drivers with red cars --- looks
+alarming but cannot answer this question: red cars could be $25\%$ of tickets simply by
+being common on campus. And the $2.26\%$ figure has everybody in the denominator, so it
+does not isolate colour at all.
+\end{solution}
+\end{problem}
+
+\section*{Low Birthweight}
+
+Suppose that at a local hospital there were 75 births last month, and 18 of those were to
+women who smoked. Suppose further that 3 of the 18 babies born to mothers who smoked were
+low birthweight, and 6 of the 57 babies born to mothers who did not smoke were low
+birthweight.
+
+\begin{problem}
+Determine the probability of a low birthweight from a smoking mother.
+
+$\answer[tolerance=0.1]{16.67}\%$
+
+\begin{solution}
+\[
+\frac{3}{18} = 0.1667 \approx 16.67\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability that the mother of a low birthweight baby smokes.
+
+$\answer[tolerance=0.1]{33.33}\%$
+
+\begin{solution}
+There are $3 + 6 = 9$ low birthweight babies in total, 3 of whom had mothers who smoked:
+\[
+\frac{3}{9} = 0.3333 \approx 33.33\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability of a low birthweight from a nonsmoking mother.
+
+$\answer[tolerance=0.1]{10.53}\%$
+
+\begin{solution}
+\[
+\frac{6}{57} = 0.10526 \approx 10.53\%.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Determine the probability that the mother of a low birthweight baby does not smoke.
+
+$\answer[tolerance=0.1]{66.67}\%$
+
+\begin{solution}
+\[
+\frac{6}{9} = 0.6667 \approx 66.67\%.
+\]
+Note this and the earlier $33.33\%$ are complements --- every low birthweight baby has a
+mother who either smoked or did not.
+\end{solution}
+\end{problem}
+
+Use the probabilities above to mark each of the following True or False, then write a
+sentence supporting your choice.
+
+\begin{problem}
+A baby born to a non-smoking mother is more likely to have a low birthweight than a baby
+born to a smoking mother.
+\begin{multipleChoice}
+\choice{True}
+\choice[correct]{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+False. $P(\text{low BW} \mid \text{nonsmoker}) = 10.53\%$, which is lower than
+$P(\text{low BW} \mid \text{smoker}) = 16.67\%$. The statement has it backwards.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A randomly selected low birthweight baby has a one-in-three chance of having a mother who
+smokes.
+\begin{multipleChoice}
+\choice[correct]{True}
+\choice{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+True. $P(\text{smoker} \mid \text{low BW}) = 3/9 = 1/3 = 33.33\%$, which is exactly one
+in three.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The majority of babies born to smoking mothers have a low birthweight.
+\begin{multipleChoice}
+\choice{True}
+\choice[correct]{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+False. Only $3$ of the $18$ babies born to smoking mothers were low birthweight ---
+$16.67\%$, nowhere near a majority. The great majority, $83.33\%$, were not.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If a baby has a low birthweight, then the mother is more likely to be a smoker than a
+non-smoker.
+\begin{multipleChoice}
+\choice{True}
+\choice[correct]{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+False. Among low birthweight babies, $33.33\%$ had mothers who smoked and $66.67\%$ had
+mothers who did not. So the mother is twice as likely to be a non-smoker.
+
+This is worth sitting with, because smoking does raise the risk. The reason non-smokers
+still dominate among low birthweight babies is that there are far more of them --- 57
+versus 18. A higher rate applied to a much smaller group can still produce fewer cases.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Most low birthweight babies are born to non-smoking mothers.
+\begin{multipleChoice}
+\choice[correct]{True}
+\choice{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+True --- $6$ of the $9$ low birthweight babies, or $66.67\%$, had non-smoking mothers,
+for exactly the reason described above.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A baby born to a smoking mother is more likely to have a low birthweight than a baby born
+to a non-smoking mother.
+\begin{multipleChoice}
+\choice[correct]{True}
+\choice{False}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+True. $16.67\%$ against $10.53\%$ --- smoking mothers' babies are more than one and a
+half times as likely to be low birthweight.
+
+Notice that this statement and the previous one are both true, even though they sound
+like they contradict each other. Smoking raises an individual baby's risk, \emph{and}
+most low birthweight babies still come from non-smoking mothers. Which is true depends
+entirely on which group sits in the denominator.
+\end{solution}
+\end{problem}
+
+\section*{Counting}
+
+Amina is choosing a meal from a menu. She first decides between a soup or a salad. Then
+she chooses a main dish: a sandwich, quiche, or fajita. Finally she selects either chips
+or cookies as her side. Below is a decision tree listing all the possibilities.
+
+\begin{center}
+\includegraphics[width=0.85\textwidth]{probability/decision_tree.png}
+\end{center}
+
+\begin{problem}
+How many possible meals does Amina have to choose from?
+
+$\answer{12}$
+
+\begin{solution}
+Two starters, three mains, and two sides: $2 \times 3 \times 2 = 12$ meals, which is what
+the tree shows.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Of these options, how many have fajita as part of the meal?
+
+$\answer{4}$
+
+\begin{solution}
+Fix the main as fajita. The starter still has 2 options and the side still has 2, so
+$2 \times 2 = 4$ meals include a fajita.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If Amina were to make her choices randomly, what would be the percentage likelihood of
+having a fajita as part of her meal?
+
+$\answer[tolerance=0.1]{33.33}\%$
+
+\begin{solution}
+\[
+\frac{4}{12} = \frac{1}{3} \approx 33.33\%.
+\]
+Which makes sense: the fajita is one of three equally likely mains, and the other two
+choices don't affect it.
+\end{solution}
+\end{problem}
+
+Counting is important in determining probability --- you need to know how many total
+options there are and how many are part of a certain outcome. Sometimes the things we
+want to count are very large, so a technique helps.
+
+In the decision tree there were two starter options, three main options, and two side
+options. For each of the two starters there are three mains, making $2 \times 3$
+combinations; and with each of those there are two sides, giving $2 \times 3 \times 2$.
+
+In general, when we have a sequence of choices and we know how many options each has, we
+find the total by \textbf{multiplying the options together}. If we build a meal from 3
+fruits, 4 proteins, and 2 desserts, that is $3 \times 4 \times 2 = 24$ total combinations.
+
+\begin{problem}
+How many different ice cream sundaes can be made with the following choices: cup or cone,
+two scoops of either strawberry, chocolate, or vanilla, and a topping of sprinkles,
+M\&Ms, or fudge?
+
+$\answer{54}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Treating each scoop as its own independent choice from the three flavours:
+\[
+\underbrace{2}_{\text{cup/cone}} \times \underbrace{3}_{\text{scoop 1}}
+\times \underbrace{3}_{\text{scoop 2}} \times \underbrace{3}_{\text{topping}} = 54.
+\]
+
+This one depends on how you read the wording. If you took ``two scoops of either
+strawberry, chocolate, or vanilla'' to mean both scoops must be the \emph{same} flavour,
+you would get $2 \times 3 \times 3 = 18$. If you decided that a chocolate-then-vanilla
+sundae is the same as vanilla-then-chocolate, you would get $2 \times 6 \times 3 = 36$.
+All three readings are defensible; what matters is stating which one you used.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many possible outfits can be made from 9 shirts, 3 pants, and 10 socks?
+
+$\answer{270}$
+
+\begin{solution}
+\[
+9 \times 3 \times 10 = 270.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A ``build your own sandwich'' restaurant wants an advertisement saying ``Over \_\_\_\_\_
+sandwich options!'' A customer chooses one from 3 breads, one from 4 proteins,
+\emph{two} from 11 toppings, and one from 7 sauces. How many different sandwiches can be
+made?
+
+$\answer{4620}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The bread, protein, and sauce are straightforward: 3, 4, and 7 options. The toppings are
+different, because you choose \emph{two} from 11 and the order you name them in does not
+change the sandwich. That is a combination:
+\[
+\binom{11}{2} = \frac{11 \times 10}{2} = 55.
+\]
+So the total is
+\[
+3 \times 4 \times 55 \times 7 = 4{,}620.
+\]
+
+For the sign, you would round \emph{down} to a number you can honestly claim to be over
+--- ``Over 4,500 sandwich options!'' is true, whereas ``Over 5,000'' would not be.
+
+Note that this problem needs the combination idea from the next section. If you instead
+treated the two toppings as ordered, you would get $11 \times 10 = 110$ and a total of
+$9{,}240$ --- exactly double, because every topping pair would be counted twice.
+\end{solution}
+\end{problem}
+
+\section*{Permutations \& Combinations}
+
+Suppose you forget the passcode to a keypad with buttons 0 through 9, but you remember it
+is 4 digits long and every digit was different. How many possible passcodes are there?
+
+Or maybe you need to choose 4 of a group of 10 friends for an outing. How many different
+options are there?
+
+In each case we have a group of ``objects'' to choose from and a ``sample'' to choose from
+that group. The difference is that in one case the \emph{order matters} --- 1567 is a
+different passcode from 5671 --- and in the other it does not, since choosing Billy,
+Jenny, Lily, and Fred is the same as choosing Fred, Lily, Billy, and Jenny.
+
+The passcode is a \textbf{permutation}: a sample of 4 from 10 objects where order matters,
+giving 5,040 possible passcodes. The friend group is a \textbf{combination}: a sample of 4
+from 10 where order does not matter, giving 210 possible choices.
+
+For each scenario below, decide whether a permutation or a combination is appropriate,
+then calculate the answer.
+
+\begin{problem}
+A student has 5 different books and wants to arrange 3 of them in a row. How many
+different ways can the books be arranged?
+\begin{multipleChoice}
+\choice[correct]{Permutation}
+\choice{Combination}
+\end{multipleChoice}
+
+$\answer{60}$
+
+\begin{solution}
+Permutation --- ``arrange in a row'' means the order on the shelf matters.
+$P(5,3) = 5 \times 4 \times 3 = 60$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A group of 7 friends need to get in line for a ride. How many possible ways can they line
+themselves up?
+\begin{multipleChoice}
+\choice[correct]{Permutation}
+\choice{Combination}
+\end{multipleChoice}
+
+$\answer{5040}$
+
+\begin{solution}
+Permutation --- a line has an order. Here the whole group is being arranged, so
+$P(7,7) = 7! = 5{,}040$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A pizza shop offers 8 toppings. If you can choose any 3 toppings, how many different ways
+can you order pizza?
+\begin{multipleChoice}
+\choice{Permutation}
+\choice[correct]{Combination}
+\end{multipleChoice}
+
+$\answer{56}$
+
+\begin{solution}
+Combination --- the pizza is the same regardless of which order you named the toppings.
+$\binom{8}{3} = 56$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Out of a group of 6 friends, how many ways can you choose 2 to go to a concert with you?
+\begin{multipleChoice}
+\choice{Permutation}
+\choice[correct]{Combination}
+\end{multipleChoice}
+
+$\answer{15}$
+
+\begin{solution}
+Combination --- the pair going to the concert is the same either way you list them.
+$\binom{6}{2} = 15$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+In a school race with 10 runners, a gold, silver and bronze medallist will be awarded. How
+many possible ways could those medals be awarded?
+\begin{multipleChoice}
+\choice[correct]{Permutation}
+\choice{Combination}
+\end{multipleChoice}
+
+$\answer{720}$
+
+\begin{solution}
+Permutation --- the medals are different, so which of the three you get matters.
+$P(10,3) = 10 \times 9 \times 8 = 720$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A group of 25 people run a race, with the top 8 finishers advancing to the final. How many
+possible groups advance?
+\begin{multipleChoice}
+\choice{Permutation}
+\choice[correct]{Combination}
+\end{multipleChoice}
+
+$\answer{1081575}$
+
+\begin{solution}
+Combination --- all that matters is \emph{who} advances, not the order they finished in.
+$\binom{25}{8} = 1{,}081{,}575$.
+
+Contrast with the medals problem: there the finishing positions carried different
+outcomes, so order mattered. Here the eight advancing runners are treated alike.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A group of 30 students must select a president, vice president, and treasurer. If each
+position were filled randomly from among them, how many total leadership possibilities
+are there?
+\begin{multipleChoice}
+\choice[correct]{Permutation}
+\choice{Combination}
+\end{multipleChoice}
+
+$\answer{24360}$
+
+\begin{solution}
+Permutation --- the three roles are distinct, so it matters which person gets which.
+$P(30,3) = 30 \times 29 \times 28 = 24{,}360$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A corporation with 25 employees presents 3 employees each year with ``Employee of the
+Year'' awards. In how many different ways can the employees be chosen?
+\begin{multipleChoice}
+\choice{Permutation}
+\choice[correct]{Combination}
+\end{multipleChoice}
+
+$\answer{2300}$
+
+\begin{solution}
+Combination --- the three awards are identical, so only the set of winners matters.
+$\binom{25}{3} = 2{,}300$.
+
+Compare with the club officers: same idea of picking 3 people, but there the three roles
+differed, making it a permutation.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The varsity track team is putting together a team to run a 3-stage relay race, where each
+stage is different and run by a different team member. If there are 15 runners, how many
+possibilities are there for making the relay team?
+\begin{multipleChoice}
+\choice[correct]{Permutation}
+\choice{Combination}
+\end{multipleChoice}
+
+$\answer{2730}$
+
+\begin{solution}
+Permutation --- the stages are different, so assigning runner A to stage 1 and runner B to
+stage 2 is a different relay team from the reverse. $P(15,3) = 15 \times 14 \times 13 =
+2{,}730$.
+\end{solution}
+\end{problem}
+
+\section*{Experimental vs Theoretical Probability}
+
+An \textbf{experimental probability} uses actual recorded instances from ``playing out''
+scenarios --- flipping a coin repeatedly and dividing the number of heads by the number
+of flips.
+
+A \textbf{theoretical probability} is determined from known information about the total
+possible scenarios, without carrying any of them out --- saying there is a $1/2$ chance of
+heads because a coin has two sides and one is heads.
+
+\begin{problem}
+Your chances of winning a lottery with 4,000,000 participants is
+$\frac{1}{4{,}000{,}000} = 0.000025\%$.
+\begin{multipleChoice}
+\choice{Experimental}
+\choice[correct]{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Theoretical --- computed from the known structure of the lottery, with no lottery actually
+run.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Since there are 4 aces in a standard deck of 52 cards, your chances of drawing an ace is
+$\frac{4}{52} \approx 7.7\%$.
+\begin{multipleChoice}
+\choice{Experimental}
+\choice[correct]{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Theoretical --- derived from the known composition of the deck, with no cards drawn.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+$11.1\%$ of US citizens were reported to be under the poverty line.
+\begin{multipleChoice}
+\choice[correct]{Experimental}
+\choice{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Experimental --- this comes from observing and counting actual people, not from any
+theory about how many ought to be in poverty.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The likelihood of rolling an even number on a six-sided die is $\frac{3}{6} = 50\%$.
+\begin{multipleChoice}
+\choice{Experimental}
+\choice[correct]{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Theoretical --- three of the six faces are even, known without rolling anything.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+In 2024, it snowed for 7 out of 28 days in February, so the likelihood of snow in February
+was $\frac{7}{28} = 25\%$.
+\begin{multipleChoice}
+\choice[correct]{Experimental}
+\choice{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Experimental --- based on what was actually recorded that February. Note it also comes
+from a single month, so it is a fairly thin basis for a general claim about February.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A farmer observes that 17 out of 20 seeds they planted sprouted, so the probability of a
+seed sprouting is $\frac{17}{20} = 85\%$.
+\begin{multipleChoice}
+\choice[correct]{Experimental}
+\choice{Theoretical}
+\end{multipleChoice}
+
+\begin{solution}
+Experimental --- the farmer planted the seeds and counted the results. There is no theory
+that predicts a sprouting rate in advance, which is exactly why it must be measured.
+\end{solution}
+\end{problem}
+
+\section*{Independent vs Dependent Events}
+
+Two events are \textbf{dependent} if one event's occurrence affects the other's. Pulling
+an ace and then a two from a deck without replacement is dependent: removing the ace
+changes what remains for the second draw.
+
+Two events are \textbf{independent} if one event's occurrence does not affect the other. A
+coin flip and a die roll are independent: how the coin lands does not change the die's
+possible outcomes.
+
+\begin{problem}
+You roll two fair dice. The events are rolling a 3 on the first die, and rolling a sum
+bigger than 7.
+\begin{multipleChoice}
+\choice[correct]{Dependent}
+\choice{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Dependent. The sum involves the first die, so knowing it landed on 3 changes the chance
+the total exceeds 7 --- with a 3 showing you need better than a 4 on the second die,
+whereas a 6 on the first would make it far easier.
+
+This is the subtle case in the set: the two \emph{dice} are independent of each other, but
+the two \emph{events} are not, because the second event is defined using the first die's
+result.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You order a meal at a fast-food restaurant. The events are (A) you order a side of fries,
+and (B) you order a drink.
+\begin{multipleChoice}
+\choice[correct]{Dependent}
+\choice{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Dependent. In practice these choices are related --- people ordering fries are more
+likely to also order a drink, and combo meals bundle them together. Knowing someone
+ordered fries does shift the probability that they ordered a drink.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A fair coin is tossed two times. The events are (A) first toss is a head and (B) second
+toss is a tail.
+\begin{multipleChoice}
+\choice{Dependent}
+\choice[correct]{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Independent. The coin has no memory --- the second toss is $50/50$ regardless of the
+first. Believing otherwise is the ``gambler's fallacy.''
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You roll two fair dice. The events are rolling a 3 on the first die, and rolling an odd
+number on the second die.
+\begin{multipleChoice}
+\choice{Dependent}
+\choice[correct]{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Independent. Each event concerns a different die, and neither is defined in terms of the
+other. Compare this with the first problem in this section, where the second event
+depended on \emph{both} dice.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Your friend Jean has blond hair. The events are (A) Jean has blond hair and (B) one of
+Jean's parents has blond hair.
+\begin{multipleChoice}
+\choice[correct]{Dependent}
+\choice{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Dependent. Hair colour is inherited, so knowing Jean is blond raises the probability that
+a parent is too.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You draw a card from a deck, then draw a second without replacing the first. The events
+are (A) the first card is an Ace and (B) the second card is a seven.
+\begin{multipleChoice}
+\choice[correct]{Dependent}
+\choice{Independent}
+\end{multipleChoice}
+
+\begin{solution}
+Dependent. Without replacement, the first draw changes the deck: 51 cards remain for the
+second draw instead of 52.
+
+Note that if the first card \emph{were} replaced and the deck reshuffled, these events
+would become independent. The dependence comes entirely from not replacing the card.
+\end{solution}
+\end{problem}
+
+\end{document}

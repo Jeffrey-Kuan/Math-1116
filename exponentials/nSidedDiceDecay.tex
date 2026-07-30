@@ -1,0 +1,266 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Exponential Decay: Predicting the Model Before You Roll}
+\begin{document}
+\begin{abstract}
+Extending the dice-decay experiment to 4-, 8-, and 12-sided dice, and then the payoff:
+you can write down a decent model \emph{without rolling anything at all}, because the
+decay rate is just the probability of surviving a roll. Comparing the theoretical models
+against the ones the spreadsheet fitted to real data.
+\end{abstract}
+\maketitle
+
+\section*{The Class Models}
+
+Each group ran the same procedure --- roll a pile of dice, remove every die showing a
+``1,'' repeat until none remain --- but with different numbers of sides. Pooling the
+class data, the spreadsheet produced these models, along with the group's actual starting
+count:
+
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+Dice & Model, $y = a \cdot e^{bx}$ & Actual starting \# & $R = e^{b}$ \\
+\hline
+6 sided  & $y = 136 \cdot e^{-0.181x}$   & 129 & 0.8344 \\
+4 sided  & $y = 44.1 \cdot e^{-0.278x}$  & 44  & 0.7573 \\
+8 sided  & $y = 32.8 \cdot e^{-0.131x}$  & 35  & 0.8772 \\
+12 sided & $y = 33.4 \cdot e^{-0.0699x}$ & 42  & 0.9325 \\
+\hline
+\end{tabular}
+\end{center}
+
+Rewriting each in the $y = a \cdot R^x$ form:
+\begin{align*}
+\text{6 sided:} \quad & y = 136(0.8344)^x \\
+\text{4 sided:} \quad & y = 44.1(0.7573)^x \\
+\text{8 sided:} \quad & y = 32.8(0.8772)^x \\
+\text{12 sided:} \quad & y = 33.4(0.9325)^x
+\end{align*}
+
+\begin{problem}
+What do the $x$-value, the $y$-value, the $a$-value, and the $R$-value represent across
+all of these models?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The $x$-values represent the number of rolls.
+
+The $y$-values represent the number of dice remaining after $x$ rolls.
+
+The $a$-values represent the starting number of dice.
+
+The $R$-values represent the percentage of dice remaining after a single roll, which
+follows from the dice decreasing by a certain percentage after each roll.
+
+It is important to specify that this is the percentage remaining after ONE roll. The
+$R$-value is not the fraction remaining at the end, nor over the whole experiment ---
+it is what gets applied once per roll.
+\end{solution}
+\end{problem}
+
+\section*{Exploring Exponential Modelling}
+
+Excel and Google Sheets give exponential models in the form $y = a \cdot e^{bx}$, and we
+rewrote them as $y = a \cdot R^x$ to see the connection to the context. But here is the
+striking part: \emph{without rolling any dice at all}, and without any special program, we
+could have written a very decent model ourselves. Let's see how.
+
+Do a thought experiment with 6-sided dice, following the same procedure: roll, and remove
+any die that came up ``1.''
+
+\begin{problem}
+Theoretically, what fraction of the dice should roll a ``1'' for a 6-sided die? And what
+fraction should \emph{not} roll a ``1''?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+A 1 in 6 chance, so $\tfrac{1}{6}$ likelihood of rolling a 1.
+
+Therefore a 5 in 6 chance of not rolling a 1, since
+$1 - \tfrac{1}{6} = \tfrac{5}{6}$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose we start with the class's actual starting number of 6-sided dice, 129. If we write
+a theoretical model in the form $y = a \cdot R^x$, which value should 129 go in for, and
+why? And which value should go in as $R$, and why?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The 129 goes in for the $a$-value, since $a$ represents the starting number of dice and in
+this thought experiment our starting number is 129.
+
+The $\tfrac{5}{6}$ goes in for the $R$-value, since $R$ represents how many dice remain
+after each roll --- which we get from how many are ``decaying'' away with each roll,
+$1 - \tfrac{1}{6} = \tfrac{5}{6}$.
+
+This is the key insight of the whole activity: the decay rate is not something you have to
+measure. It is just the probability that a die survives a roll.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Put these numbers where they belong to create the theoretical model for our 6-sided dice.
+Then compare its $R$ against the program's model, $y = 136(0.8344)^x$. Why would we
+hope the program's $R$ is close to $0.8333\ldots$?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The theoretical model is
+\[
+y = 129 \left(\frac{5}{6}\right)^x.
+\]
+
+The program's model has $R = 0.8344$, and $\tfrac{5}{6} = 0.8333\ldots$ --- a difference of
+only $0.0011$.
+
+We want the program's $R$ to land near $0.8333\ldots$ because that is what should
+theoretically happen when these dice are rolled. Agreement between the fitted value and
+the theoretical one indicates ``good data'' --- that the experiment behaved the way
+probability says it should. A large gap would suggest either unusual luck or something
+wrong with how the rolls were carried out or recorded.
+\end{solution}
+\end{problem}
+
+\section*{Comparing the Two Models}
+
+Continuing with the example data, which had 129 actual starting dice:
+
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+Roll & Actual from experiment & Spreadsheet model $136(0.8344)^x$ & Theoretical model $129\left(\tfrac{5}{6}\right)^x$ \\
+\hline
+0 & 129 & 136 & 129 \\
+1 & 111 & 113 & 108 \\
+2 & 94  & 95  & 90  \\
+3 & 84  & 79  & 75  \\
+4 & 71  & 66  & 62  \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{problem}
+How do these values compare? Which model is better, and which would we \emph{expect} to be
+better? Why?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The theoretical model is closer for the first two rolls --- at roll 0 it is exact, since it
+was built from the true starting count. But from roll 2 onward the spreadsheet's model is
+closer to the actual values, and would likely stay closer for many rolls after.
+
+We would expect the spreadsheet model to be better for \emph{our} data, because it was
+built from our data. Even though the theoretical model wins at rolls 0 and 1, the
+spreadsheet finds the best exponential function for the data as a whole rather than for
+any specific point, which is why it tracks better across the rest.
+
+The theoretical model has a different kind of value. It would not change at all for a
+different class rolling different 6-sided dice --- only the starting count $a$ would
+differ. It describes what 6-sided dice \emph{do}, not what this particular pile happened
+to do.
+\end{solution}
+\end{problem}
+
+\section*{Theoretical Models for the Other Dice}
+
+\begin{problem}
+Using the same idea, write theoretical models for the 4, 8, and 12 sided dice, using each
+group's actual starting count (44, 35, and 42 respectively). Also write one for 10-sided
+dice, using $a$ as the starting number.
+
+For $n$-sided dice, $R = \answer[tolerance=0.001]{0.9}$ when $n = 10$.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+For $n$-sided dice, exactly one face is a ``1,'' so the chance of surviving a roll is
+$\tfrac{n-1}{n}$. That is the $R$-value every time.
+\begin{align*}
+\text{4-sided:} \quad & y = 44\left(\tfrac{3}{4}\right)^x \\
+\text{8-sided:} \quad & y = 35\left(\tfrac{7}{8}\right)^x \\
+\text{12-sided:} \quad & y = 42\left(\tfrac{11}{12}\right)^x \\
+\text{10-sided:} \quad & y = a\left(\tfrac{9}{10}\right)^x
+\end{align*}
+Notice that the 10-sided model needs no experiment whatsoever --- we can write it down
+without anyone ever having rolled a 10-sided die, because the rate follows from the
+geometry of the die alone.
+
+Note also the pattern: more sides means a larger $R$, closer to 1, meaning slower decay.
+This makes sense --- with 12 sides, a die has only a $1/12$ chance of being removed each
+roll, so the pile shrinks far more slowly than a 4-sided pile does.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Compare the theoretical models against the program's models:
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Dice & Theoretical & Program's \\
+\hline
+6 sided  & $y = 129\left(\tfrac{5}{6}\right)^x$, \; $R = 0.8333$   & $y = 136(0.8344)^x$ \\
+4 sided  & $y = 44\left(\tfrac{3}{4}\right)^x$, \; $R = 0.7500$    & $y = 44.1(0.7573)^x$ \\
+8 sided  & $y = 35\left(\tfrac{7}{8}\right)^x$, \; $R = 0.8750$    & $y = 32.8(0.8772)^x$ \\
+12 sided & $y = 42\left(\tfrac{11}{12}\right)^x$, \; $R = 0.9167$  & $y = 33.4(0.9325)^x$ \\
+\hline
+\end{tabular}
+\end{center}
+
+Which dice seemed to have ``acted'' the most theoretically, and which the least? Explain
+how you decided.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+First lay out both differences for each:
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Dice & $|R$ difference$|$ & $|a$ difference$|$ \\
+\hline
+6 sided  & 0.0011 & 7.0 \\
+4 sided  & 0.0073 & 0.1 \\
+8 sided  & 0.0022 & 2.2 \\
+12 sided & 0.0158 & 8.6 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Least theoretical: the 12-sided dice}, and this one is unambiguous --- they are
+furthest off on \emph{both} measures, with the largest $R$ gap (0.0158) and the largest
+$a$ gap (8.6).
+
+\textbf{Most theoretical: it depends which measure you use,} and this is worth being
+careful about. On the $a$-value the 4-sided dice win easily, off by only 0.1 die. But on
+the $R$-value the 6-sided dice win, off by only 0.0011 against the 4-sided dice's 0.0073
+--- nearly seven times closer.
+
+So a defensible answer names the criterion. If you care most about the decay rate matching
+theory --- which is arguably the more meaningful comparison, since $R$ is the part that
+probability predicts --- the 6-sided dice acted most theoretically. If you care about the
+model reproducing the starting count, the 4-sided dice did.
+
+Note that the $a$-value is not really a test of whether the dice behaved theoretically at
+all. It measures how well the fitted curve happens to pass through roll 0, which is more a
+feature of the curve-fitting than of the dice.
+\end{solution}
+\end{problem}
+
+\end{document}

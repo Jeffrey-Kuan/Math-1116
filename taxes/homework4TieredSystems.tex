@@ -1,0 +1,450 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Homework 4: Tiered Systems}
+\begin{document}
+\begin{abstract}
+Applying the tax-schedule machinery to two non-tax settings: a discount club's rebate
+tiers, and the Pell Grant expected-contribution table. Effective versus marginal rates,
+working backwards from a known payout, and reasoning about what a negative tier value
+means.
+\end{abstract}
+\maketitle
+
+\section*{Part 1 --- Discount Club}
+
+Suppose you are part of a Discount Club which provides members with monthly rebates on
+purchases made to various companies. To incentivize members to buy, the percent rebate
+increases as the total value of purchases increases. The chart below indicates the
+rebates the club pays out monthly depending on a member's spending.
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{If total purchases are over} & \textbf{but not over} & \textbf{the rebate is} \\
+\hline
+\$100    & \$800    & $5\%$ of the amount over \$100 \\
+\hline
+\$800    & \$1,200  & \$35 plus $10\%$ of the amount over \$800 \\
+\hline
+\$1,200  & \$2,000  & \$75 plus $15\%$ of the amount over \$1,200 \\
+\hline
+\$2,000  & no limit & \$195 plus $20\%$ of the amount over \$2,000 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{problem}
+What rebate would a member receive if they spent \$935 in a given month?
+
+\$$\answer[tolerance=0.5]{48.50}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\$935 falls in the second row, so the rebate is \$35 plus $10\%$ of the amount over
+\$800:
+\[
+\$35 + 0.10 \cdot (\$935 - \$800) = \$35 + \$13.50 = \$48.50.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What would be the effective rebate rate for this spending? Give the calculation, the
+mathematical reason for that calculation, and the reason in terms of the context.
+
+About $\answer[tolerance=0.2]{5.19}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{Calculation:}
+\[
+\frac{\$48.50}{\$935} = 0.05187\ldots \approx 5.19\%.
+\]
+
+\textbf{Math reason:} An effective rate compares the total amount received against the
+total amount it was computed from --- the whole rebate over the whole spending, not the
+rate from any single row.
+
+\textbf{Context reason:} It answers ``across everything I spent this month, what
+fraction came back to me?'' Notice it is $5.19\%$, which sits just above the $5\%$ of
+the first tier and well below the $10\%$ of the tier this member actually landed in.
+That is because most of their spending was rebated at the lower rate, and only the last
+\$135 earned $10\%$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose a member spent \$1,300 last month and then \$1,600 the next month. What is the
+marginal change in total purchases, and what is the marginal change in rebates received?
+
+Change in purchases: \$$\answer{300}$
+
+Rebate at \$1,300: \$$\answer{90}$ \qquad Rebate at \$1,600: \$$\answer{135}$
+
+Change in rebates: \$$\answer{45}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The change in purchases is $\$1{,}600 - \$1{,}300 = \$300$.
+
+To find the change in rebates we must calculate the rebate at each spending level
+separately. Both fall in the third row:
+\[
+\text{rebate}(\$1{,}300) = \$75 + 0.15 \cdot (\$1{,}300 - \$1{,}200) = \$75 + \$15 = \$90
+\]
+\[
+\text{rebate}(\$1{,}600) = \$75 + 0.15 \cdot (\$1{,}600 - \$1{,}200) = \$75 + \$60 = \$135
+\]
+So the change in rebates is $\$135 - \$90 = \$45$.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What would be the marginal rebate rate for this change in spending, and why does that
+rate make sense given the rebate table?
+
+$\answer{15}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{Calculation:}
+\[
+\frac{\$45}{\$300} = 0.15 = 15\%.
+\]
+
+\textbf{Math reason:} A marginal rate compares the \emph{change} in rebate against the
+\emph{change} in spending --- it describes only the additional \$300, not the whole
+\$1,600.
+
+\textbf{Context reason:} It answers ``of the extra \$300 I spent, how much came back?''
+
+\textbf{Why it makes sense:} Both \$1,300 and \$1,600 sit inside the same row of the
+table, the one covering \$1,200 to \$2,000 at $15\%$. Since the entire \$300 increase
+happened within that single tier, the whole increase was rebated at that tier's rate,
+and the marginal rate is exactly $15\%$.
+
+Contrast this with the raise that crossed a tax bracket boundary: there the marginal
+rate landed between the two bracket rates, because the increase was split across two
+tiers. Here nothing was split, so we get a rate straight off the table.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You overhear another club member bragging that they got \$125 in rebates last month. How
+much did they spend? Your explanation should include how and why you know which line of
+the rebate table was used.
+
+About \$$\answer[tolerance=15]{1533.33}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+First identify the row. The third row spans rebates from \$75 (at \$1,200 of spending)
+up to \$195 (at \$2,000). Since $\$75 < \$125 < \$195$, the third row was used. It
+cannot be the second row, whose largest rebate is \$75, nor the fourth, whose smallest
+is \$195.
+
+Now reverse that row's instruction:
+\[
+\$125 = \$75 + 0.15 \cdot (P - \$1{,}200)
+\]
+\[
+\$50 = 0.15 \cdot (P - \$1{,}200)
+\quad\Longrightarrow\quad
+P - \$1{,}200 = \frac{\$50}{0.15} = \$333.33
+\]
+\[
+P = \$1{,}200 + \$333.33 = \$1{,}533.33.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+To be part of the Discount Club there is a monthly fee of \$25. How much do you need to
+spend each month for membership to be worth it?
+
+More than \$$\answer[tolerance=10]{600}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Membership is worth it when the rebate exceeds the fee, so we need the spending $P$ at
+which the rebate equals \$25 and then go above it.
+
+A \$25 rebate is small, so try the first row, where the rebate is $5\%$ of the amount
+over \$100:
+\[
+\$25 = 0.05 \cdot (P - \$100)
+\quad\Longrightarrow\quad
+P - \$100 = \$500
+\quad\Longrightarrow\quad
+P = \$600.
+\]
+\$600 does fall inside the first row's range of \$100 to \$800, so the assumption was
+consistent and the answer stands: you need to spend more than \$600 in a month.
+
+Worth noticing: below \$100 of spending the rebate is \$0, so a member who spends very
+little pays \$25 a month for nothing.
+\end{solution}
+\end{problem}
+
+\section*{Part 2 --- Pell Grants}
+
+Pell Grants are grants, not loans, meaning they do not have to be repaid. They are
+awarded to undergraduate students to aid them in paying for college tuition. We assume
+we are looking at a Pell Grant for a dependent student. After a questionnaire about
+family income, it comes to a table where an amount to be paid by the parents is
+determined from the Adjusted Available Income (AAI).
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{If the parents' AAI is} & \textbf{Then the parents' contribution from AAI is} \\
+\hline
+Less than $-$\$6,820      & $-$\$1,500 \\
+\hline
+$-$\$6,820 to \$20,600    & $22\%$ of AAI \\
+\hline
+\$20,601 to \$25,800      & \$4,532 plus $25\%$ of AAI over \$20,600 \\
+\hline
+\$25,801 to \$31,000      & \$5,832 plus $29\%$ of AAI over \$25,800 \\
+\hline
+\$31,001 to \$36,300      & \textbf{(A)} plus $34\%$ of AAI over \$31,000 \\
+\hline
+\$36,301 to \$41,500      & \textbf{(B)} plus $40\%$ of AAI over \$36,300 \\
+\hline
+\$41,501 or more          & \$11,222 plus $47\%$ of AAI over \$41,500 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Borderline AAIs}
+
+\begin{problem}
+If a parents' AAI is \$25,800, how much would their contribution be, according to this
+table?
+
+\$$\answer{5832}$
+
+\begin{solution}
+\$25,800 is the top of the row spanning \$20,601 to \$25,800:
+\[
+\$4{,}532 + 0.25 \cdot (\$25{,}800 - \$20{,}600) = \$4{,}532 + \$1{,}300 = \$5{,}832.
+\]
+Notice this is exactly the base amount printed in the \emph{next} row --- the same
+continuity pattern as the tax schedule.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Use what you noticed in the previous question to fill in blanks (A) and (B).
+
+(A) $=$ \$$\answer{7340}$ \qquad (B) $=$ \$$\answer{9142}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Each base is the contribution owed by someone sitting exactly at the bottom edge of that
+row, computed from the row below.
+
+\textbf{Blank (A)} is the contribution at an AAI of \$31,000, from the \$25,801--\$31,000
+row:
+\[
+\$5{,}832 + 0.29 \cdot (\$31{,}000 - \$25{,}800) = \$5{,}832 + \$1{,}508 = \$7{,}340.
+\]
+
+\textbf{Blank (B)} is the contribution at an AAI of \$36,300, now using the row we have
+just completed:
+\[
+\$7{,}340 + 0.34 \cdot (\$36{,}300 - \$31{,}000) = \$7{,}340 + \$1{,}802 = \$9{,}142.
+\]
+
+You can check (B) against the final row: $\$9{,}142 + 0.40 \cdot (\$41{,}500 -
+\$36{,}300) = \$9{,}142 + \$2{,}080 = \$11{,}222$, which is the base the table already
+prints for the last row.
+\end{solution}
+\end{problem}
+
+\subsection*{Calculating Contributions}
+
+\begin{problem}
+If a parent's AAI is \$28,000, how much are they expected to contribute?
+
+\$$\answer{6470}$
+
+\begin{solution}
+\$28,000 falls in the \$25,801--\$31,000 row:
+\[
+\$5{,}832 + 0.29 \cdot (\$28{,}000 - \$25{,}800) = \$5{,}832 + \$638 = \$6{,}470.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What is the effective rate of contribution in this scenario? Give the calculation, the
+math reason, and the context reason.
+
+About $\answer[tolerance=0.3]{23.11}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{Calculation:}
+\[
+\frac{\$6{,}470}{\$28{,}000} = 0.23107\ldots \approx 23.11\%.
+\]
+
+\textbf{Math reason:} The total contribution divided by the total AAI it was computed
+from.
+
+\textbf{Context reason:} It says that across the family's whole adjusted available
+income, about $23\%$ of it is expected to go toward college costs. Note this sits below
+the $29\%$ marginal rate of the row they are in, for the same reason effective tax
+rates sit below marginal ones.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Is this effective rate analogous to an effective tax rate compared to total income, or
+to taxable income? Explain your choice.
+
+\begin{multipleChoice}
+\choice{Total income}
+\choice[correct]{Taxable income}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+It is analogous to the rate computed against \emph{taxable} income.
+
+The reason is what AAI is: it is the figure that remains after the questionnaire has
+already made its adjustments and allowances, and it is the number the table actually
+operates on. That is exactly the role taxable income plays in the tax schedule --- the
+post-deduction figure the brackets are applied to.
+
+The family's actual gross income, before those adjustments, would be the analogue of
+total income, and dividing by that would give a smaller percentage.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If a parent's contribution is expected to be \$4,000, what was determined to be their
+AAI?
+
+About \$$\answer[tolerance=200]{18181.82}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+First find the row. The row for AAI from $-$\$6,820 to \$20,600 produces contributions
+up to $0.22 \cdot \$20{,}600 = \$4{,}532$ at its top. Since $\$4{,}000 < \$4{,}532$, the
+contribution came from this row.
+
+That row is simply $22\%$ of AAI, so
+\[
+\$4{,}000 = 0.22 \cdot \text{AAI}
+\quad\Longrightarrow\quad
+\text{AAI} = \frac{\$4{,}000}{0.22} = \$18{,}181.82.
+\]
+That is within the row's range, confirming the choice.
+\end{solution}
+\end{problem}
+
+\subsection*{Comparing to Taxes}
+
+\begin{problem}
+If a parent's AAI is $-$\$5,000, how much are they expected to contribute? What does
+this mean in the ``real world''?
+
+\$$\answer{-1100}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+$-$\$5,000 falls in the $-$\$6,820 to \$20,600 row, which is $22\%$ of AAI:
+\[
+0.22 \cdot (-\$5{,}000) = -\$1{,}100.
+\]
+
+A negative expected contribution means the family is not expected to pay anything toward
+tuition --- and more than that, the negative figure feeds into the aid formula as
+additional demonstrated need, increasing the grant the student is eligible for. An AAI
+below zero indicates the family's allowances exceeded their available income.
+
+Note also the floor: the first row caps this at $-$\$1,500 for any AAI below
+$-$\$6,820. Checking continuity, $0.22 \cdot (-\$6{,}820) = -\$1{,}500.40$, which is
+the $-$\$1,500 of the row above, rounded. So the table stops rewarding an increasingly
+negative AAI past that point.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Describe at least two ways in which this structure is \textbf{similar to} the Federal
+Income Tax system as we discussed in class.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Several defensible answers; two of the strongest:
+
+\emph{The base-plus-rate structure is identical.} Each row is ``some fixed amount plus a
+percentage of the amount over the row's lower boundary,'' and each fixed amount is the
+total accumulated from all rows below --- which is why we could compute blanks (A) and
+(B) by exactly the method we used for blanks A, B, and C in the tax schedule.
+
+\emph{It is continuous, so it has marginal rates rather than cliffs.} Crossing a boundary
+changes the rate only on the amount above it. A family whose AAI rises by a dollar never
+sees their expected contribution jump.
+
+\emph{The calculation is reversible.} Given a contribution, you can identify the row from
+the range of contributions it can produce, then undo the arithmetic to recover the AAI ---
+exactly as we did working backwards from a tax bill.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Describe at least two ways in which this structure is \textbf{different from} the
+Federal Income Tax system as we discussed in class.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Again several defensible answers:
+
+\emph{Values can be negative.} There is no such thing as negative taxable income in the
+tax schedule, but AAI can be negative, and the table explicitly handles it --- and even
+places a floor of $-$\$1,500 on the result. The tax schedule has no analogous floor.
+
+\emph{The rates climb much faster over a much narrower range.} The tax schedule takes
+until \$510,300 to reach $37\%$. This table reaches $47\%$ by \$41,501. The tiers are
+only about \$5,200 wide, compared to tax brackets tens of thousands of dollars wide.
+
+\emph{The direction of benefit is reversed.} A higher tax means money leaving you for the
+government; a higher expected contribution means less grant aid. Both are computed the
+same way, but one is a payment and the other is a reduction in a benefit.
+
+\emph{The boundaries are stated in whole dollars} (\$20,600 then \$20,601) rather than
+the tax schedule's ``over\ldots but not over'' phrasing, which technically leaves
+fractional amounts between rows undefined.
+\end{solution}
+\end{problem}
+
+\end{document}

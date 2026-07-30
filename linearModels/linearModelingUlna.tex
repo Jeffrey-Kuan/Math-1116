@@ -1,0 +1,377 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Linear Modeling: Ulna Length and Height}
+\begin{document}
+\begin{abstract}
+The difference between a linear \emph{function} and a linear \emph{model}: taxes are
+truly linear, but height-versus-ulna-length only has a linear trend. Using the class's
+own measurements to build a model, then interrogating it --- what the slope and
+intercept mean in context, where the domain stops making real-world sense, and how far
+wrong the model is allowed to be.
+\end{abstract}
+\maketitle
+
+\section*{Functions \& Models}
+
+A \textbf{function} is an actual linear thing --- it can be used for an actual linear
+scenario, such as an electric bill or a tax bracket. A \textbf{model} uses a function
+to mathematically represent ``messy data.'' The data is NOT perfectly linear, but has a
+linear trend which can be modeled by a linear function.
+
+So for our ulna measurements, we are \emph{modeling} the relationship with a linear
+function. With taxes, it is not a model --- the taxes are ``truly'' linear.
+
+\section*{Modeling Ulna Data}
+
+Before today's class, you should have measured your height and your ulna to the nearest
+0.5 cm and entered that data into the spreadsheet linked in Carmen. This data was then
+used to create a scatterplot and a linear model for the data.
+
+Whether your data appears to be linear or not, record the linear function which is
+modeling the data --- it will be of the form $y = m \cdot x + b$. You will refer back to
+your class's own $m$ and $b$ throughout the problems below.
+
+\begin{problem}
+What does $x$ represent in the function? Use a specific value (like $x = 7$) in your
+description.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+$x$ represents the length of a person's ulna, measured in centimetres. For example,
+$x = 25$ refers to a person whose ulna is 25 cm long.
+
+As with the graph-reading problems, a full answer names both the mathematical quantity
+($x$, in cm) and what it means in context (the length of someone's forearm bone).
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What does $y$ represent in the function? Use a specific value (like $y = 7$) in your
+description.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+$y$ represents the predicted height of that person, in centimetres. For example,
+$y = 170$ means the model predicts a height of 170 cm.
+
+Note the word \emph{predicted}. Because this is a model rather than a function, $y$ is
+what the trend line expects, not what that individual necessarily measures.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What is the value of the slope? What does this slope mean in terms of this context?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The slope is the $m$ from your class's model. In context it says: for every additional
+1 cm of ulna length, the model predicts roughly $m$ additional centimetres of height.
+
+Published studies put this figure somewhere near 4, so if your class's slope is in that
+neighbourhood, an extra centimetre of forearm corresponds to about four extra
+centimetres of person.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What is the $y$-intercept value? What does this mean in terms of this context?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The $y$-intercept is the $b$ from your class's model. Literally, it is the height the
+model predicts for a person whose ulna is 0 cm long --- which is why it is worth
+examining rather than accepting.
+\end{solution}
+\end{problem}
+
+\subsection*{Establishing a Reasonable Domain}
+
+\begin{problem}
+Does the $y$-intercept's contextual meaning ``make sense'' in the real world?
+\begin{multipleChoice}
+\choice{Yes}
+\choice[correct]{No}
+\end{multipleChoice}
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+No. The $y$-intercept describes a person with an ulna of length 0 cm, which does not
+describe any person at all. The model still needs an intercept to position the line
+correctly, but that particular point carries no real-world meaning.
+
+This is the central lesson about models: the algebra will happily give you an output
+for any input you feed it, and it is your job to decide which inputs are meaningful.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Would the meaning for $x = 5$ ``make sense'' in the real world?
+\begin{multipleChoice}
+\choice{Yes}
+\choice[correct]{No}
+\end{multipleChoice}
+
+Would the meaning for $x = 50$ ``make sense'' in the real world?
+\begin{multipleChoice}
+\choice{Yes}
+\choice[correct]{No}
+\end{multipleChoice}
+
+\begin{solution}
+Neither does. A 5 cm ulna is far shorter than even an infant's, and a 50 cm ulna is far
+longer than any adult's --- adult ulnae run roughly 24--30 cm. Both inputs sit well
+outside the range of the data the model was built from, so the model has no grounds to
+say anything about them.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What do you think would be the smallest $x$ value for which our model would give a
+reasonable real-world interpretation? Explain your choice in 2--3 sentences.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+A defensible answer sits near the smallest ulna measurement your class actually
+recorded. The reasoning matters more than the number: the model was fitted to your
+class's data, so it is only supported over the range that data covers. Going below the
+smallest measured value is extrapolation, and the further you extrapolate the less
+reason you have to trust the output.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What do you think would be the largest $x$ value for which our model would give a
+reasonable real-world interpretation? Explain your choice in 2--3 sentences.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Symmetrically, a defensible answer sits near the largest ulna measurement in your
+class's data, for the same reason.
+
+The two values you have now chosen --- the smallest and largest sensible $x$ --- are
+together the \textbf{domain} of the model.
+\end{solution}
+\end{problem}
+
+\section*{The Model's Error}
+
+\begin{problem}
+Suppose someone's ulna bone is 24 cm long. According to our model, how tall is this
+person likely to be?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Substitute $x = 24$ into your class's model: the predicted height is $m \cdot 24 + b$
+centimetres. Using the researchers' published model from the next section,
+$y = 4.39(24) + 45.89 = 151.25$ cm, so a class model in that neighbourhood should give
+something close to 151 cm.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Was there a data point with $x = 24$? If so, how does it compare to the output you got
+in the previous question? If there is not a data point with $x = 24$, estimate how far
+off you think the model could be from a ``true'' value with $x = 24$, based on how the
+model relates to other data points.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+This depends on your class's data. The thing to look at is the vertical gap between the
+data points and the line near $x = 24$: if the nearby points sit within a few
+centimetres of the line, that is roughly how far off you should expect the prediction at
+$x = 24$ to be.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What do you think is an acceptable amount that the model's height could be off? Is off
+by 5 cm acceptable? Off by 10 cm? By 1 meter? Explain your choice in 2--3 sentences.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+There is no single right answer, but the reasoning should be anchored to the context. 1
+metre is plainly unacceptable --- that is the difference between a child and a tall
+adult. 5 cm is about two inches, which for estimating someone's height from a forearm
+bone is arguably fine. 10 cm is around four inches, which starts to be a meaningful
+error.
+
+What makes an answer good here is naming what the model would be \emph{used for}. A
+forensic identification demands far tighter error than a rough classroom estimate.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose someone is 170 cm tall. About how long is their ulna bone likely to be
+according to your model?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+This time you know $y$ and want $x$, so solve $170 = m \cdot x + b$ for $x$, giving
+$x = \dfrac{170 - b}{m}$.
+
+With the researchers' model, $x = \dfrac{170 - 45.89}{4.39} = \dfrac{124.11}{4.39}
+\approx 28.3$ cm.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Will this ulna value be close to the ``true'' ulna length of a person who is 170 cm
+tall? Why or why not?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Not necessarily. Plenty of different people are 170 cm tall, and their ulnae are not all
+the same length --- that is exactly why the data forms a cloud rather than a perfect
+line. The model returns the ulna length of a \emph{typical} 170 cm person, not of any
+particular one.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Will its ``error'' be the same as the ``acceptable error'' you established earlier?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+No, and this is the subtle point. Earlier you set an acceptable error in \emph{height},
+measured in centimetres of height. Now you are predicting an \emph{ulna length}, so the
+error is measured in centimetres of ulna.
+
+Because the slope is about 4, an error of 4 cm in predicted height corresponds to only
+about 1 cm of ulna. The two errors are related by the slope, so a tolerance you set for
+one does not transfer directly to the other.
+\end{solution}
+\end{problem}
+
+\section*{A Published Scientific Model}
+
+Below is a graph of data from a study which measured the ulna and height of many women
+to see if there is a linear relationship between the two.
+
+\begin{center}
+\includegraphics[width=\textwidth]{linearModels/ulna_scatterplot.png}
+\end{center}
+
+The researchers decided that this data does have a linear relationship, and found the
+linear trendline for this data to be
+\[
+y = 4.39x + 45.89.
+\]
+
+\begin{problem}
+Describe how you would draw this line on the graph above. Note that you are not
+``sketching'' the line; you have an expression for the function, so you should be able
+to place it fairly exactly.
+
+(Hint: on a separate sheet of paper, draw a line which passes through $(3,4)$ and
+$(6,10)$. Can you do something similar here with the information provided?)
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Pick two $x$-values inside the range of the data and compute the matching $y$-values,
+then join them. For instance at $x = 24$, $y = 4.39(24) + 45.89 = 151.25$; at $x = 30$,
+$y = 4.39(30) + 45.89 = 177.59$. Plot $(24, 151.25)$ and $(30, 177.59)$ and draw the
+line through them.
+
+Two points determine a line exactly, which is why this is drawing rather than sketching.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Along with this trendline data, the researchers specified that the resulting $y$-value
+from this trendline could be $\pm 7.03$ in value. What does this mean in terms of this
+context?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+It means the model's predicted height for a given ulna length is expected to be within
+about 7.03 cm of that person's actual height. So for an ulna of 24 cm, predicting
+151.25 cm, the person's real height would typically fall somewhere between about 144.2
+cm and 158.3 cm.
+
+That is a band roughly 14 cm wide --- worth noticing when you compare it to the
+acceptable error you chose earlier.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Describe how you would draw two more lines on the graph to represent this $\pm 7.03$
+information, and explain how you used the information to decide where they go.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Draw one line 7.03 units above the trendline and one 7.03 units below it, both parallel
+to the original. In equation form these are $y = 4.39x + 52.92$ and
+$y = 4.39x + 38.86$ --- the slope is unchanged because the uncertainty is in the
+predicted height, not in the rate of change, so the band has constant vertical width.
+
+Most of the data points should fall inside this band.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Pick a data point that might describe an individual who has ``proportionally short
+arms'' and describe where it sits on the graph. What are you looking for graphically,
+and why?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Look for a point sitting well \emph{above} the trendline. A point above the line is
+someone whose actual height is greater than the model predicts from their ulna ---
+equivalently, their ulna is shorter than you would expect for someone of their height.
+That is what ``proportionally short arms'' means.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Pick a data point that might describe an individual who has ``proportionally long arms''
+and describe where it sits on the graph. What are you looking for graphically, and why?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Look for a point sitting well \emph{below} the trendline: someone whose actual height is
+less than the model predicts from their ulna, meaning their forearm is long relative to
+their height.
+
+The vertical distance from a point to the line is called the \emph{residual}, and it is
+precisely this quantity --- how far off the model is for that individual --- that the
+$\pm 7.03$ figure summarises across the whole dataset.
+\end{solution}
+\end{problem}
+
+\end{document}

@@ -1,0 +1,253 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Exponential Decay: Rolling Dice Away}
+\begin{document}
+\begin{abstract}
+A hands-on decay experiment --- roll a pile of dice, remove every die showing a ``1,''
+repeat until none are left --- and then fit an exponential model to the class's pooled
+data. Converting between the $y = a e^{bx}$ form that spreadsheets produce and the
+$y = a R^x$ form that makes the context readable.
+\end{abstract}
+\maketitle
+
+\section*{The Experiment}
+
+Go to \url{https://www.randomlists.com/dice} to simulate dice rolling. Set the number of
+sides to 6 and the total number of dice to roll to 25, then click ``return'' to simulate
+a roll.
+
+Roll the 25 dice and count how many came up as a ``1.'' Remove those dice from your
+total. So if you rolled 25 dice and 7 came up ``1,'' then for the next roll you change
+your total to $25 - 7 = 18$ dice.
+
+If no dice roll a ``1,'' then none are removed --- but you still record that value again
+in your table for that roll. Especially when few dice are left, you may have several
+rolls in a row where the number does not change.
+
+Continue rolling and recording how many dice remain until you have 0 dice left. For the
+first 10 rolls, also calculate what percentage of dice remain from the previous roll.
+
+\subsection*{Example data}
+
+\begin{center}
+\begin{tabular}{ccl}
+\hline
+Roll & Dice remaining & \% remaining from previous roll \\
+\hline
+0  & 25 & N/A \\
+1  & 21 & $21/25 = 0.840 = 84.0\%$ \\
+2  & 19 & $19/21 = 0.905 = 90.5\%$ \\
+3  & 13 & $13/19 = 0.684 = 68.4\%$ \\
+4  & 11 & $11/13 = 0.846 = 84.6\%$ \\
+5  & 10 & $10/11 = 0.909 = 90.9\%$ \\
+6  & 9  & $9/10 = 0.900 = 90.0\%$ \\
+7  & 9  & $9/9 = 1.000 = 100\%$ \\
+8  & 7  & $7/9 = 0.778 = 77.8\%$ \\
+9  & 7  & $7/7 = 1.000 = 100\%$ \\
+10 & 6  & $6/7 = 0.857 = 85.7\%$ \\
+11 & 5  & \\
+12 & 4  & \\
+13 & 3  & \\
+14 & 3  & \\
+15 & 2  & \\
+16 & 1  & \\
+17 & 1  & \\
+18 & 0  & \\
+\hline
+\end{tabular}
+\end{center}
+
+This example reached 0 dice at roll 18. Yours may take more or fewer rolls --- the two
+rolls above where the count did not change (rolls 7 and 9) are exactly the kind of thing
+that makes the length vary.
+
+Once you have rolled away all your dice, enter your dice-remaining values for each roll
+into your class's Google Sheet. While the class finishes, work on the following.
+
+\section*{The Other Form: $y = a \cdot e^{bx}$}
+
+The exponential functions we have worked with have all been written as $y = a \cdot R^x$.
+But exponential models can also come in the form $y = a \cdot e^{bx}$, and this second
+form is what programs most commonly produce.
+
+That ``$e$'' is just a letter for a special irrational number. Just as
+$\pi = 3.14159\ldots$, we have $e = 2.71828\ldots$ Your scientific calculator should have
+a button for it.
+
+\begin{problem}
+Suppose we have an exponential model $y = 671 \cdot e^{0.3x}$. Rewrite this in the form
+$y = a \cdot R^x$.
+
+Using properties of exponents, $e^{bx} = (e^b)^x$. Calculate the $e^b$ value, rounded to
+four decimal places.
+
+$e^{0.3} = \answer[tolerance=0.001]{1.3499}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\[
+e^{0.3} = 1.3499\ldots
+\]
+which means
+\[
+y = 671 \cdot e^{0.3x} = 671 \cdot (1.3499)^x.
+\]
+The whole conversion rests on the exponent rule $e^{bx} = (e^b)^x$ --- once you see that,
+$R$ is just $e^b$.
+\end{solution}
+\end{problem}
+
+\section*{Modelling the Class Data}
+
+Once everyone has entered their data, your instructor will have the spreadsheet produce a
+model. In the example data below, the class rolled 6-sided dice, actually started with
+\textbf{129} dice, and the spreadsheet produced
+\[
+y = 136 \cdot e^{-0.181x}.
+\]
+
+\begin{problem}
+What do the $x$-value and the $y$-value represent in this model?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The $x$-values represent the number of rolls. The $y$-values represent the number of dice
+remaining after $x$ rolls.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The starting number of dice should be when $x = \answer{0}$. Use this and the model to
+determine the model's estimate for the starting number of dice.
+
+$\answer{136}$ dice
+
+\begin{solution}
+The starting number is the count at roll 0, before any rolls have occurred --- hence
+$x = 0$, since $x$ represents the number of rolls. Plugging in:
+\[
+y(0) = 136 \cdot e^{-0.181(0)} = 136 \cdot e^{0} = 136 \cdot 1 = 136.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Why does the model's estimate of 136 not match the actual starting number of 129?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Because the data is not perfectly exponential. The spreadsheet finds the exponential
+curve that best fits \emph{all} the data points taken together, and that best-fit curve is
+not required to pass exactly through any particular one of them --- including the starting
+count.
+
+Real dice rolls are random, so the class's actual counts wobble around the smooth
+exponential shape rather than sitting on it. The model trades a little accuracy at roll 0
+for a better overall fit across every roll.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now plug $x = 8$ into the model. Explain what the $x$ and $y$ values mean in this context.
+
+$y(8) \approx \answer[tolerance=1]{32}$ dice
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\[
+y(8) = 136 \cdot e^{-0.181(8)} = 136 \cdot (0.2350\ldots) = 31.97 \approx 32.
+\]
+This means that when $x = 8$, $y = 32$: after 8 rolls, we should expect about 32 dice
+remaining.
+\end{solution}
+\end{problem}
+
+\section*{Rewriting the Model}
+
+We can rewrite the model the program produced without the ``$e$,'' putting it in a more
+recognisable form.
+
+\begin{problem}
+Using $e^{bx} = (e^b)^x$ and the numbers from our model, calculate the $e^b$ value,
+rounded to four decimal places, and write the model in the form $y = a \cdot R^x$.
+
+$e^{-0.181} = \answer[tolerance=0.001]{0.8344}$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\[
+e^{-0.181} = 0.8344\ldots
+\]
+so the model becomes
+\[
+y = 136 \cdot (0.8344)^x.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What should this $R$-value be representing in this context? What percentage of dice are
+lost with each roll?
+
+$\answer[tolerance=0.2]{16.56}\%$ lost per roll
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The $R$-value tells us about the decay rate --- the percentage change in the number of
+dice after each roll.
+
+In our earlier examples we had exponential \emph{growth}, so $R$ showed by what percentage
+values were increasing: an $R$ of 1.056 meant $1.056 = 1 + 0.056$, a $5.6\%$ increase per
+year. Here we have exponential \emph{decrease}, so
+\[
+0.8344 = 1 - 0.1656 = 100\% - 16.56\%,
+\]
+meaning about a $16.56\%$ decrease per roll. We expect to lose about $16.56\%$ of our dice
+with each roll.
+
+Equivalently --- and often the more natural reading --- if we lose $16.56\%$, then
+$83.44\%$ of the dice \emph{remain} after each roll. The $R$-value is directly the
+fraction surviving.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now plug $x = 8$ into the rewritten model. Does your value equal what you got from the
+other form? Should they be equal? Why or why not?
+
+$y(8) \approx \answer[tolerance=1]{32}$ dice
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\[
+y(8) = 136 \cdot (0.8344)^8 = 136 \cdot (0.2350\ldots) = 31.95 \approx 32.
+\]
+
+The two answers round to the same value but are not identical past the decimal point:
+31.97 from the $e$ form versus 31.95 from the $R$ form.
+
+They \emph{should} be equal in principle, because both forms are the same underlying
+model just written differently. The small discrepancy comes entirely from rounding $e^b$
+to four decimal places when we wrote $R = 0.8344$. Carrying full precision would make
+them match exactly.
+
+This is worth noticing generally: rounding an intermediate value introduces error that
+gets amplified when that value is raised to a power.
+\end{solution}
+\end{problem}
+
+\end{document}

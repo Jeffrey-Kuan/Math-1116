@@ -1,0 +1,436 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Exponentials: Growth}
+\begin{document}
+\begin{abstract}
+Building an exponential function from a repeated percentage increase, identifying what
+$a$ and $R$ mean in $y = a \cdot R^x$, contrasting constant \emph{absolute} change
+(linear) with constant \emph{relative} change (exponential), and using Guess \& Check ---
+and then $n$th roots --- to answer doubling-time questions.
+\end{abstract}
+\maketitle
+
+\section*{Where Exponentials Come From}
+
+What is an exponential function? What does it mean for something to be ``exponential''?
+To get an idea, let's revisit a problem from our Percentages activity.
+
+An athlete signs a contract saying that they will earn \$8.3 million with an increase of
+$4.8\%$ each year of the 5 year contract.
+
+\begin{problem}
+Fill in the athlete's salary, in millions of dollars, after each year.
+
+After year 1: \$$\answer[tolerance=0.1]{8.7}$ million
+
+After year 2: \$$\answer[tolerance=0.1]{9.1}$ million
+
+After year 3: \$$\answer[tolerance=0.1]{9.55}$ million
+
+After year 4: \$$\answer[tolerance=0.1]{10.0}$ million
+
+\begin{solution}
+Each year the salary is multiplied by $1 + 0.048 = 1.048$. Working from the previous
+year's salary each time:
+\begin{align*}
+\text{Year 1:} \quad & \$8.3 \cdot 0.048 + \$8.3 = \$8.3 \cdot 1.048 = \$8.70 \\
+\text{Year 2:} \quad & \$8.70 \cdot 1.048 = [\$8.3 \cdot 1.048] \cdot 1.048 = \$9.12 \\
+\text{Year 3:} \quad & \$9.12 \cdot 1.048 = \$8.3 \cdot (1.048)^2 \cdot 1.048 = \$9.55 \\
+\text{Year 4:} \quad & \$9.55 \cdot 1.048 = \$8.3 \cdot (1.048)^3 \cdot 1.048 = \$10.01
+\end{align*}
+
+But look at the right-hand side of each line. Each one collapses to the starting salary
+times a power of $1.048$:
+\[
+\$8.3 \cdot (1.048)^0, \quad \$8.3 \cdot (1.048)^1, \quad \$8.3 \cdot (1.048)^2,
+\quad \$8.3 \cdot (1.048)^3, \quad \$8.3 \cdot (1.048)^4,
+\]
+and the exponent is always the number of years completed. That is the pattern the whole
+activity rests on.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose this athlete renewed this contract indefinitely, so the $4.8\%$ yearly increase
+didn't stop after 5 years. How much would they be earning at the end of the 17th year?
+
+\$$\answer[tolerance=0.3]{18.4}$ million
+
+\begin{solution}
+The power always equals how many years of the contract have been completed, so put 17 in
+as the exponent:
+\[
+\$8.3 \text{ mill} \cdot (1.048)^{17} = \$18.4 \text{ mill}.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How much money would this athlete be earning after the $x$th year? Write a function.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Since the exponent is the number of years completed, put $x$ in for the exponent:
+\[
+y = \$8.3 \text{ mill} \cdot (1.048)^x.
+\]
+\end{solution}
+\end{problem}
+
+\section*{Reading the Pieces of $y = a \cdot R^x$}
+
+We have developed an exponential function describing this athlete's salary. Let's
+identify what each piece represents in $y = 8.3(1.048)^x$.
+
+\begin{problem}
+For the function $y = 8.3(1.048)^x$, identify the units and meaning of each piece.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{8.3} --- units of millions of dollars. Represents the starting salary of the
+contract.
+
+\textbf{1.048} --- no units, technically, as it comes from a percentage. The growth rate
+is a $4.8\%$ increase; the 1.048 represents that $4.8\%$ increase in salary each year.
+
+\textbf{$x$} --- units of years. Represents the amount of time that has passed, that is,
+which year of the contract we are after.
+
+\textbf{$y$} --- units of millions of dollars. Represents the salary of the contract
+after year $x$.
+\end{solution}
+\end{problem}
+
+\section*{Comparing Exponential and Linear Functions}
+
+Let's change the problem slightly and compare the exponential situation with a linear
+one. An athlete signs a contract saying they will earn \$8.3 million with an increase of
+\textbf{\$500,000} each year of the 5 year contract.
+
+\begin{problem}
+Write a linear function to represent how much money the athlete will be making after year
+$x$.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+A linear function has the form $y = mx + b$, so we need an $m$ and a $b$.
+
+The $b$-value is \$8.3 million, as that is what the athlete is paid initially. The
+\$500,000 per year is the slope, as that is how the salary changes each year.
+
+One catch: 8.3 is in millions of dollars but 500,000 is not, so we must put them in the
+same units --- either write \$8.3 mill as \$8,300,000, or write \$500,000 as \$0.5 mill:
+\[
+y = \frac{\$0.5 \text{ mill}}{\text{year}} \cdot x + \$8.3 \text{ mill}
+\qquad \text{or} \qquad
+y = \frac{\$500{,}000}{\text{year}} \cdot x + \$8{,}300{,}000.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What is the slope of your function, what are its units, and what does it mean in this
+context? Same for the $y$-intercept.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{Slope} $= \dfrac{\$0.5 \text{ mill}}{\text{year}} = \dfrac{\$500{,}000}{\text{year}}$,
+meaning the athlete will earn an additional \$0.5 million per year of the contract.
+
+\textbf{$y$-intercept} $=$ \$8.3 mill $=$ \$8,300,000. This means that when $x = 0$ ---
+at the beginning of the contract, after 0 years --- the athlete's salary is \$8.3 million.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Look back at the exponential function $y = 8.3(1.048)^x$. Which value in it is most like
+the \emph{$y$-intercept} of the linear function, and which is most like the \emph{slope}?
+Why?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The \textbf{8.3} in the exponential function is most similar to the $y$-intercept. Not
+only are they the exact same value, they both represent an initial amount.
+
+The \textbf{1.048} is most like the slope. These values are not the same, but they are
+both describing the change happening each year to the athlete's salary.
+
+The crucial distinction: \emph{linear functions have a constant absolute change, whereas
+exponential functions have a constant relative change.} The slope is a constant absolute
+change --- \$500,000 more every year, no matter how big the salary already is. The
+$R$-value is a constant relative change --- $4.8\%$ more every year, which is a larger
+and larger dollar amount as the salary grows.
+\end{solution}
+\end{problem}
+
+\section*{Building a Function Directly}
+
+Now that we know what each piece of $y = a \cdot R^x$ means, we can write exponential
+functions for new scenarios without going through the step-by-step table.
+
+Some CDs (a banking investment option) offer rates giving about $3.10\%$ yield per year,
+as long as a minimum amount such as \$5,000 is invested. A CD is held for a certain number
+of years, and when it ``matures'' you usually have the option to renew.
+
+\begin{problem}
+Suppose you invest the minimum \$5,000 to get this $3.10\%$ yield. Write a function
+describing how much the investment will be worth after $x$ years, and identify what each
+value represents.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\[
+y = \$5{,}000 \cdot (1 + 0.031)^x = \$5{,}000(1.031)^x
+\]
+
+\$5,000 --- the initial investment, the beginning amount.
+
+1.031 --- the growth rate, describing how the investment changes. It shows a $3.1\%$
+increase for each year.
+
+$x$ --- in years, the number of years completed in the investment.
+
+$y$ --- in dollars, the value of the investment after $x$ years.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose this is a 7 year CD. How much will your investment be worth at the end of the CD?
+
+\$$\answer[tolerance=5]{6191.28}$
+
+\begin{solution}
+Since $x$ is in years, plug in 7:
+\[
+y = \$5{,}000 \cdot (1.031)^7 = \$6{,}191.28.
+\]
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose you keep renewing this CD every time it matures. About how many years will it
+take to double the initial investment? Use Guess \& Check.
+
+$\answer{23}$ years
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We want our function to output \$10,000, because that is double the initial \$5,000
+investment.
+
+\textbf{Step 1: find the closest whole number giving less than we want.} Try whole
+numbers for $x$ until you get a value below \$10,000 where the next whole number goes
+above it. Here $x = 22$:
+\[
+\$5{,}000 \cdot (1.031)^{22} = \$9{,}787.25.
+\]
+
+\textbf{Step 2: find the closest whole number giving more than we want.} $x = 23$:
+\[
+\$5{,}000 \cdot (1.031)^{23} = \$10{,}090.65.
+\]
+So the exact answer is somewhere between $x = 22$ and $x = 23$.
+
+\textbf{Step 3: which is closer?}
+\[
+\$10{,}000 - \$9{,}787.25 = \$212.75
+\qquad
+\$10{,}090.65 - \$10{,}000 = \$90.65
+\]
+\$10,090.65 is closer, so we use \textbf{23 years} as the estimate.
+
+Even when it seems obvious which value is closer, showing this subtraction is a good
+habit, and you should do it every time. In future problems asking for Guess \& Check
+these steps will not be listed out for you --- they define how much work is needed for
+full credit.
+\end{solution}
+\end{problem}
+
+\section*{Reading Someone Else's Model}
+
+Using data from the CDC about ebola cases in Guinea, an exponential model can be created
+representing the number of cases $x$ days after May 25th, 2014, through the remainder of
+2014:
+\[
+y = 121.2(1.0117)^x.
+\]
+
+\begin{problem}
+What do $x$, $y$, and $121.2$ represent in this context?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+$x$ represents the number of days since May 25th, 2014.
+
+$y$ represents the number of ebola cases $x$ days after May 25th, 2014.
+
+$121.2$ is the initial amount, meaning there were about 121 cases of ebola around May
+25th, 2014.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What does $1.0117$ tell us about this context? Give the percentage.
+
+$\answer[tolerance=0.05]{1.17}\%$ increase per day
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+This value tells us how the quantity is changing. In the previous problems we had to
+build this value ourselves: for the athlete it was $1.048$ from a $4.8\%$ increase, and
+for the investment it was $1.031$ from a $3.10\%$ increase.
+
+Here we read it in the other direction: $1.0117 = 1 + 0.0117$, indicating a $1.17\%$
+increase in ebola cases each day.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Use Guess \& Check to estimate when the number of ebola cases doubles. Show the same
+steps as before.
+
+About $\answer{60}$ days
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Double of $121.2$ is $242.4$, so we want an output around 242.4 cases.
+
+Closest whole $x$ below: $x = 59$,
+\[
+121.2 \cdot (1.0117)^{59} = 240.7 \text{ cases}.
+\]
+Closest whole $x$ above: $x = 60$,
+\[
+121.2 \cdot (1.0117)^{60} = 243.6 \text{ cases}.
+\]
+So the exact answer is between 59 and 60 days. Which is closer?
+\[
+242.4 - 240.7 = 1.7 \qquad 243.6 - 242.4 = 1.2
+\]
+243.6 is slightly closer, so use \textbf{60 days} as the estimate.
+
+Worth pausing on what this means: a $1.17\%$ daily increase sounds tiny, but it doubles
+the caseload in two months.
+\end{solution}
+\end{problem}
+
+\section*{Solving for the Rate}
+
+\begin{problem}
+Suppose there is a new virus that reportedly doubles infection cases in about 20 days.
+What would be this virus's infection rate, as a percent?
+
+About $\answer[tolerance=0.3]{3.5}\%$
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We don't know the rate, so that is the missing piece --- call it $R$. The number of days
+$x$ is 20. We don't know the initial number of cases, but it will not matter: call it $a$
+and set the function equal to $2a$, double whatever the initial amount is.
+\[
+2a = a \cdot R^{20}
+\]
+Divide both sides by $a$:
+\[
+2 = R^{20}
+\]
+Take the 20th root of both sides:
+\[
+R = 2^{1/20} = 1.0353\ldots
+\]
+$R = 1.035\ldots$ means an increase of about $3.5\%$, so $3.5\%$ is the infection rate.
+
+Why the initial number wasn't needed: doubling is a \emph{relative} statement. It asks
+how long until the quantity is twice whatever it started at, and the starting amount
+divides out of both sides. This is a general feature of exponential growth --- the
+doubling time depends only on the rate, never on where you start.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Return to the athlete's salary problem: \$8.3 million with a $4.8\%$ increase each year.
+Determine through Guess \& Check an estimate for how long it would take for the salary to
+double.
+
+About $\answer{15}$ years
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We want the salary to be double \$8.3 mill, so we want an output of \$16.6 mill from
+$y = 8.3(1.048)^x$.
+
+Closest whole below: $x = 14$,
+\[
+8.3(1.048)^{14} = \$16.0 \text{ mill}.
+\]
+Closest whole above: $x = 15$,
+\[
+8.3(1.048)^{15} = \$16.8 \text{ mill}.
+\]
+So the answer is between 14 and 15 years. Which is closer?
+\[
+\$16.6 - \$16.0 = \$0.6 \text{ mill}
+\qquad
+\$16.8 - \$16.6 = \$0.2 \text{ mill}
+\]
+\$16.8 mill is closer, so the salary would double after about \textbf{15 years}.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now assume the athlete negotiates for a better rate: they want their initial salary to
+double in 10 years. What rate should they push for in the contract?
+
+About $\answer[tolerance=0.3]{7.2}\%$ per year
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We don't know the rate, so put $R$ in for it. We want the time to be 10 years, so plug
+that in for $x$, and set it equal to \$16.6 mill, double the initial \$8.3 mill:
+\[
+8.3 \cdot R^{10} = 16.6
+\]
+Divide both sides by 8.3:
+\[
+R^{10} = 2
+\]
+Take the 10th root of both sides:
+\[
+R = 2^{1/10} = 1.0718\ldots
+\]
+$R = 1.072\ldots$ means an increase of about $7.2\%$, so the athlete should ask for about
+a $7.2\%$ increase per year.
+
+Notice this is only about one and a half times the original $4.8\%$, yet it cuts the
+doubling time from 15 years to 10. Small changes in an exponential rate have
+disproportionate effects on doubling time.
+\end{solution}
+\end{problem}
+
+\end{document}
