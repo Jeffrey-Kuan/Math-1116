@@ -23,6 +23,11 @@
 %% single document, so duplicate \newcommand definitions across activities collide,
 %% and the xourse gobbles \input so a per-topic macro file never loads.
 %%
+%% They use \providecommand, NOT \newcommand. ximera.cls loads this file automatically,
+%% and every activity also carries an explicit \input{../xmPreamble}, so this file is
+%% read twice. That was harmless while it held only \usepackage lines (LaTeX skips a
+%% package it has already loaded) but a second \newcommand is a hard error.
+%%
 %%   \blank[width]        fill-in-the-blank rule (default 2.5cm)
 %%   \showwork            "show and explain your work" reminder
 %%   \showworkline        ... plus which schedule line was used
@@ -32,18 +37,18 @@
 %%   \samecubes[scale]{left}{right}     two equal-volume cubes, labelled
 %% ---------------------------------------------------------------
 
-\newcommand{\blank}[1][2.5cm]{\underline{\hspace{#1}}}
-\newcommand{\showwork}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.}}
-\newcommand{\showworkline}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.
+\providecommand{\blank}[1][2.5cm]{\underline{\hspace{#1}}}
+\providecommand{\showwork}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.}}
+\providecommand{\showworkline}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.
   Explanation should include how and why you know which line of the
   schedule was used to calculate this amount.}}
-\newcommand{\showworkyear}{\begin{sloppypar}\textbf{REMEMBER TO SHOW AND
+\providecommand{\showworkyear}{\begin{sloppypar}\textbf{REMEMBER TO SHOW AND
   EXPLAIN YOUR WORK. Explanation should include how and why you know which
   line of the year's tax schedule was used to calculate this tax
   amount.}\end{sloppypar}}
-\newcommand{\schedhead}[1]{\begin{center}\textbf{#1}\end{center}}
+\providecommand{\schedhead}[1]{\begin{center}\textbf{#1}\end{center}}
 
-\newcommand{\samesquares}[3][1]{%
+\providecommand{\samesquares}[3][1]{%
 \begin{center}
 {\footnotesize These squares are the \textbf{same size}.}
 
@@ -62,7 +67,7 @@
 \end{tikzpicture}
 \end{center}}
 
-\newcommand{\samecubes}[3][1]{%
+\providecommand{\samecubes}[3][1]{%
 \begin{center}
 {\footnotesize These cubes are the \textbf{same size}.}
 
