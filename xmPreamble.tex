@@ -15,6 +15,77 @@
 \usepackage{amsthm}
 \usepackage{fontenc}
 
+%% ---------------------------------------------------------------
+%% Shared worksheet macros.
+%%
+%% These came from the Summer 2026 worksheet set, where each worksheet carried its
+%% own copy. They have to live here instead: a xourse inlines every activity into a
+%% single document, so duplicate \newcommand definitions across activities collide,
+%% and the xourse gobbles \input so a per-topic macro file never loads.
+%%
+%%   \blank[width]        fill-in-the-blank rule (default 2.5cm)
+%%   \showwork            "show and explain your work" reminder
+%%   \showworkline        ... plus which schedule line was used
+%%   \showworkyear        ... plus which year's schedule was used
+%%   \schedhead{...}      centred bold caption above a tiered-rate table
+%%   \samesquares[scale]{left}{right}   two equal-area squares, labelled
+%%   \samecubes[scale]{left}{right}     two equal-volume cubes, labelled
+%% ---------------------------------------------------------------
+
+\newcommand{\blank}[1][2.5cm]{\underline{\hspace{#1}}}
+\newcommand{\showwork}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.}}
+\newcommand{\showworkline}{\textbf{REMEMBER TO SHOW AND EXPLAIN YOUR WORK.
+  Explanation should include how and why you know which line of the
+  schedule was used to calculate this amount.}}
+\newcommand{\showworkyear}{\begin{sloppypar}\textbf{REMEMBER TO SHOW AND
+  EXPLAIN YOUR WORK. Explanation should include how and why you know which
+  line of the year's tax schedule was used to calculate this tax
+  amount.}\end{sloppypar}}
+\newcommand{\schedhead}[1]{\begin{center}\textbf{#1}\end{center}}
+
+\newcommand{\samesquares}[3][1]{%
+\begin{center}
+{\footnotesize These squares are the \textbf{same size}.}
+
+\vspace{1.5mm}
+\begin{tikzpicture}[scale=#1,every node/.style={scale=#1}]
+  \draw (0,0) rectangle (2.4,2.4);
+  \node[anchor=north west] at (0.15,2.25) {Area:};
+  \node[anchor=east]  at (-0.15,1.2) {#2};
+  \node[anchor=north] at (1.2,-0.15) {#2};
+  \begin{scope}[xshift=4.6cm]
+    \draw (0,0) rectangle (2.4,2.4);
+    \node[anchor=north west] at (0.15,2.25) {Area:};
+    \node[anchor=east]  at (-0.15,1.2) {#3};
+    \node[anchor=north] at (1.2,-0.15) {#3};
+  \end{scope}
+\end{tikzpicture}
+\end{center}}
+
+\newcommand{\samecubes}[3][1]{%
+\begin{center}
+{\footnotesize These cubes are the \textbf{same size}.}
+
+\vspace{1.5mm}
+\begin{tikzpicture}[scale=#1,every node/.style={scale=#1}]
+  \foreach \dx in {0,5.2} {
+    \begin{scope}[xshift=\dx cm]
+      \draw (0,0) rectangle (2.0,2.0);
+      \draw (0,2.0) -- (0.65,2.6) -- (2.65,2.6) -- (2.0,2.0);
+      \fill[black!12] (2.0,0) -- (2.65,0.6) -- (2.65,2.6) -- (2.0,2.0) -- cycle;
+      \draw (2.0,0) -- (2.65,0.6) -- (2.65,2.6) -- (2.0,2.0);
+      \node[anchor=north west] at (0.1,1.9) {Volume:};
+    \end{scope}
+  }
+  \node[anchor=east]  at (-0.15,1.0) {#2};
+  \node[anchor=north] at (1.0,-0.15) {#2};
+  \node[anchor=west]  at (2.25,0.4) {#2};
+  \node[anchor=east]  at (5.05,1.0) {#3};
+  \node[anchor=north] at (6.2,-0.15) {#3};
+  \node[anchor=west]  at (7.45,0.4) {#3};
+\end{tikzpicture}
+\end{center}}
+
 %% NOTE: do NOT add \usepackage to individual activity .tex files.
 %% When a xourse inlines an activity it gobbles \documentclass and \input, but a bare
 %% \usepackage still executes -- after \begin{document} -- and errors out.

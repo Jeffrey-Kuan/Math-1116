@@ -1,0 +1,877 @@
+\documentclass[12pt]{ximera}
+\input{../xmPreamble}
+\title{Units: Change Measurement, Not Quantity}
+\begin{document}
+\begin{abstract}
+Unit conversion as multiplication by a disguised 1, why squared and cubed units
+convert by the square and cube of the linear factor, scaling as its own kind of
+equivalence, and non-standard equivalences such as price and material density.
+\end{abstract}
+\maketitle
+
+\section*{Change Measurement, Not Quantity}
+
+Is 12 the same as 1? As a numerical value, no, 12 and 1 are not the same. However, if
+we give these values units, they can represent the same thing! For instance, 12 inches
+is the same length as 1 foot, and 12 months is the same span as 1 year.
+
+Units are often used in everyday life, even if we don't necessarily think of them as
+units. For example, you wouldn't say ``I went to the grocery store and bought a
+dozen.'' A dozen what? You've given how many you've bought (the value), but not how
+many of what you have bought (the units). Instead, you would say ``I went to the
+grocery store and bought a dozen eggs.''
+
+Another aspect to note is that when we convert between units, we are \textbf{not
+changing the quantity}, we are just changing \textbf{how we are measuring it}. For
+example, if you have 1 gallon or 4 quarts of some liquid, you have the same amount of
+liquid since 1 gallon $=$ 4 quarts. The difference is only in how you are choosing to
+measure the liquid: gallons (a larger measurement) or quarts (a smaller measurement).
+This change of measurement, not quantity, is why we can say that 3 gallons is equal to
+$3 \cdot 4 = 12$ quarts. Why do we multiply by 4? Why not divide by 4? We can use the
+math of fractions to help us ``see'' why this works.
+
+Since 1 gallon $=$ 4 quarts, multiplying by $\dfrac{4\text{ quarts}}{1\text{ gallon}}$
+or by $\dfrac{1\text{ gallon}}{4\text{ quarts}}$ is the same as multiplying the
+quantity by 1, since the quantities 4 quarts and 1 gallon are equal, and equal things
+divided by each other equal 1:
+\[
+1 \;=\; \frac{3}{3} \;=\; \frac{138}{138} \;=\; \frac{\pi}{\pi}
+\;=\; \frac{4\text{ quarts}}{1\text{ gallon}} \;=\; \frac{1\text{ gallon}}{4\text{ quarts}}
+\]
+However, we are changing \emph{how} we are measuring it, which is why the numerical
+value is changing. Remember, we are only changing the units, not the amount. Hence:
+\[
+3\text{ gallons} \cdot \frac{4\text{ quarts}}{1\text{ gallon}} \;=\; 12\text{ quarts}
+\]
+
+Just as with ``normal'' fractions: when we have the same value in the numerator and the
+denominator, they ``cancel away.'' In a similar way of thinking, we can see that there
+are ``gallons'' in the numerator of our original value, and ``gallons'' in the
+denominator of what we're multiplying by, and thus the ``gallon'' units ``cancel'' with
+each other, leaving the ``quart'' units in our answer. It is in needing these like
+units to cancel that we can know we would NOT do
+\[
+3\text{ gallons} \cdot \frac{1\text{ gallon}}{4\text{ quarts}} \;=\; 0.75\text{ square gallons per quart}
+\]
+As this gives the units ``square gallons per quart'' which is nonsensical, or at least
+not something helpful to us for understanding in the real world.
+
+\section*{Units \& Dimensions}
+
+First, let's practice some common conversions using this ``fractional'' approach
+described above.
+
+\begin{problem}
+How many yards are in a mile?
+
+\hspace{1em} 3 feet $=$ 1 yard \qquad 5,280 feet $=$ 1 mile
+
+There are $\answer{1760}$ yards in a mile.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We ``have'' 1 mile, and we are trying to change our measurement of this length into
+yards.
+\begin{gather*}
+1\text{ mile} \cdot \frac{5{,}280\text{ feet}}{1\text{ mile}} \cdot \frac{1\text{ yard}}{3\text{ feet}}
+= \frac{5{,}280}{3}\text{ yards} = 1{,}760\text{ yards}
+\end{gather*}
+Hence there are 1,760 yards in a mile.
+
+\textbf{Note:} It is highly recommended that you write an ``intro'' sentence and a
+``concluding'' sentence for each of your answers, as that will help you to provide more
+explanation and context to the math of the fractional calculations. This is also a good
+tip to keep in mind for other problems where you are not sure how to ``explain more.''
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many cups of gasoline could fit into a 15 gallon tank?
+
+\hspace{1em} 4 cups $=$ 1 quart \qquad 4 quarts $=$ 1 gallon
+
+A 15 gallon tank holds $\answer{240}$ cups.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We have 15 gallons, which we want to convert into cup measurements.
+\begin{gather*}
+15\text{ gal} \cdot \frac{4\text{ quarts}}{1\text{ gal}} \cdot \frac{4\text{ cups}}{1\text{ quart}}
+= 15 \cdot 4 \cdot 4\text{ cups} = 240\text{ cups}
+\end{gather*}
+So there are 240 cups in 15 gallons.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The definition of an acre is that 1 acre $=$ 43,560 sq ft. Consider the question:
+``100,000 feet is the same as how many acres?'' Explain why this question does not make
+sense. In your explanation, show an attempt at answering the question, and explain what
+the resulting units would be.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+This does not make sense because the question is asking us to convert feet, which
+measures length, into acres, which measures area, which are not the same thing. Acres
+measure the area which SQUARE feet also measure, not ``plain'' feet.
+
+The question might be asked thinking that we could do this:
+\begin{gather*}
+100{,}000\text{ feet} \cdot \frac{1\text{ acre}}{43{,}560\text{ sq ft}}
+\end{gather*}
+But this would not ``cancel away'' the sq ft in the denominator, so we would have
+\begin{gather*}
+100{,}000\text{ feet} \cdot \frac{1\text{ acre}}{43{,}560\text{ sq ft}}
+= \frac{100{,}000}{43{,}560}\ \text{acre/feet} = \text{about } 2.3\ \text{acre/feet}.
+\end{gather*}
+Perhaps acres per foot make sense in some context, but I am not sure of one, and either
+way, it would not be converting feet to acres!
+\end{solution}
+\end{problem}
+
+Just as in the questions above, you will be provided with conversion values that you
+will need for problems. However, you will only be given the conversion factors ``12 in
+$=$ 1 ft'' or ``5,280 ft $=$ 1 mile'' for a problem which asks about square inches,
+square feet, square miles, or cubic inches, cubic feet, or cubic miles. Let's determine
+how we should use such conversion factors for the square or cubic versions.
+
+\section*{Determining Dimensional Conversion Equivalences}
+
+In order to convert between units, we need some sort of equivalence. Just like 4 quarts
+$=$ 1 gallon or 16 oz $=$ 1 pound are equivalences that we can then use to convert from
+quarts to gallons or vice versa, or ounces to pounds or vice versa. Let's determine the
+equivalence between square feet and square inches.
+
+\samesquares{1 ft}{\blank[1.1cm]\ in}
+
+\begin{problem}
+Calculate the area of the left square using the given ``feet'' units. Then label the
+right square with the equivalent quantity in ``inches'' units and calculate its area.
+What is the case about these two areas?
+
+1 sq ft $= \answer{144}$ sq inches.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Since these squares are the same size, that means they must cover the same area. Since
+the left one is 1 ft $\cdot$ 1 ft $=$ 1 sq ft, and the right one is the same, but
+measured in inches, and thus an area of 12 inches $\cdot$ 12 inches $=$ 144 sq inches,
+this means that 1 sq ft $=$ 144 sq inches!
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Convert 0.75 sq ft into square inches.
+
+$0.75$ sq ft $= \answer{108}$ sq inches.
+
+\begin{solution}
+We have 0.75 sq ft and we want to know how many sq inches this area is, so we can use
+the fact that 1 sq ft $= 12 \cdot 12 = 144$ square inches to convert it to square
+inches.
+\begin{gather*}
+0.75\text{ sq ft} \cdot \frac{144\text{ sq in}}{1\text{ sq ft}} = 108\text{ sq inches}
+\end{gather*}
+Hence 0.75 sq ft is the same as 108 sq inches.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Convert 36,000 square inches into square feet.
+
+$36{,}000$ sq inches $= \answer{250}$ sq feet.
+
+\begin{solution}
+We have 36,000 sq inches and we want to know how many sq feet this area is, so we can
+use the fact that 1 sq ft $= 12 \cdot 12 = 144$ square inches to convert it to square
+feet.
+\begin{gather*}
+36{,}000\text{ sq inches} \cdot \frac{1\text{ sq ft}}{144\text{ sq inches}} = 250\text{ sq feet}
+\end{gather*}
+Hence 36,000 sq inches is the same as 250 sq feet.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Using the idea we established in the previous problems, fill in the following
+equivalences.
+
+\hspace{1em} 12 inches $=$ 1 foot \qquad 5,280 feet $=$ 1 mile
+
+\begin{itemize}
+\item 1 sq foot $= \answer{144}$ sq inches
+\item 1 sq mile $= \answer{27878400}$ sq feet
+\item 1 cubic foot $= \answer{1728}$ cubic inches
+\item 1 cubic mile $= \answer{147197952000}$ cubic feet
+\end{itemize}
+
+\samesquares[0.60]{1 ft}{\blank[1.1cm]\ in}
+
+\samecubes[0.60]{1 ft}{\blank[1.1cm]\ in}
+
+\begin{solution}
+\begin{gather*}
+1\text{ sq ft} = 1\text{ ft} \cdot 1\text{ ft} = 12\text{ in} \cdot 12\text{ in}
+= 12^{2} = 144\text{ sq inches} \\
+1\text{ sq mi} = 1\text{ mi} \cdot 1\text{ mi} = 5{,}280\text{ ft} \cdot 5{,}280\text{ ft}
+= (5{,}280)^{2} = 27{,}878{,}400\text{ sq ft} \\
+1\text{ cu ft} = 1\text{ ft} \cdot 1\text{ ft} \cdot 1\text{ ft}
+= 12\text{ in} \cdot 12\text{ in} \cdot 12\text{ in} = 12^{3} = 1{,}728\text{ cu inches} \\
+1\text{ cu mi} = 5{,}280\text{ ft} \cdot 5{,}280\text{ ft} \cdot 5{,}280\text{ ft}
+= 5{,}280^{3} = 147{,}197{,}952{,}000\text{ cu ft}
+\end{gather*}
+\end{solution}
+\end{problem}
+
+The conversion values you have determined above will \textbf{not be provided to you}.
+It is expected that you use provided information such as ``1 foot $=$ 12 inches'' to
+determine an equivalence between square inches and square feet, or cubic inches and
+cubic feet as needed. Use these equivalences to help you answer the following problems.
+
+\begin{problem}
+A lot of land measures 50,000 feet by 150,000 feet. How many square miles is this lot?
+Answer this question by first converting the feet into miles.
+
+The lot is about $\answer[tolerance=2]{269.8}$ square miles.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+If we first convert the feet into miles, we can then multiply the mile lengths to get
+the area in sq mile units:
+\begin{gather*}
+50{,}000\text{ ft} \cdot \frac{1\text{ mile}}{5{,}280\text{ ft}} = \frac{50{,}000}{5{,}280}\text{ miles} = \text{about } 9.5\text{ miles} \\
+150{,}000\text{ ft} \cdot \frac{1\text{ mile}}{5{,}280\text{ ft}} = \frac{150{,}000}{5{,}280}\text{ miles} = \text{about } 28.4\text{ miles}
+\end{gather*}
+Now we multiply the lengths of the land in miles to find the square miles:
+\begin{gather*}
+9.5\text{ miles} \cdot 28.4\text{ miles} = 269.8\text{ sq miles}
+\end{gather*}
+The lot of land is about 269.8 sq miles.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Answer the same question --- how many square miles is the 50,000 ft by 150,000 ft lot
+--- but this time by first calculating the square feet of the land.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+We can calculate the square feet the lot of land is and then convert those sq ft into
+sq miles using the fact that 1 sq mi $= 5{,}280^{2} = 27{,}878{,}400$ sq ft.
+
+Area in sq ft:
+\begin{gather*}
+50{,}000\text{ ft} \cdot 150{,}000\text{ ft} = 7{,}500{,}000{,}000\text{ sq ft}
+\end{gather*}
+Now convert the area into sq miles:
+\begin{gather*}
+7{,}500{,}000{,}000\text{ sq ft} \cdot \frac{1\text{ sq mile}}{27{,}878{,}400\text{ sq ft}} = \text{about } 269\text{ sq miles}
+\end{gather*}
+The lot of land is about 269 sq miles.
+
+The two methods differ slightly (269.8 versus 269) only because the first rounded the
+mile lengths to one decimal place before multiplying.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many acres is that same lot?
+
+\hspace{1em} 43,560 sq ft $=$ 1 acre
+
+The lot is about $\answer[tolerance=500]{172176}$ acres.
+
+\begin{solution}
+Since we calculated how many sq feet the land is, we know it is 7,500,000,000 sq ft. So
+we can use the conversion factor to change this into acre measurements:
+\begin{gather*}
+7{,}500{,}000{,}000\text{ sq ft} \cdot \frac{1\text{ acre}}{43{,}560\text{ sq ft}} = \text{about } 172{,}176\text{ acres}
+\end{gather*}
+The lot of land is about 172,176 acres.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+A fish tank measures 36 inches by 18 inches by 18 inches. How many cubic feet of water
+does it hold? Solve this in two ways, and remember to state what the ``method'' is you
+are going to use before each one.
+
+\hspace{1em} 12 inches $=$ 1 foot
+
+The tank holds $\answer[tolerance=0.1]{6.75}$ cubic feet.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+\textbf{Method 1.} If we first convert the inches into feet, we can then multiply the
+feet lengths to get the volume in cubic feet units:
+\begin{gather*}
+36\text{ inches} \cdot \frac{1\text{ ft}}{12\text{ inches}} = \frac{36}{12}\text{ ft} = 3\text{ ft} \\
+18\text{ inches} \cdot \frac{1\text{ ft}}{12\text{ inches}} = \frac{18}{12}\text{ ft} = 1.5\text{ ft}
+\end{gather*}
+Now we multiply the lengths of the tank in feet to find the cubic feet:
+\begin{gather*}
+3\text{ ft} \cdot 1.5\text{ ft} \cdot 1.5\text{ ft} = 6.75\text{ cubic feet}
+\end{gather*}
+
+\textbf{Method 2.} We can calculate the cubic inches the tank holds and then convert
+those cubic inches into cubic feet using the fact that 1 cu ft $= 12^{3} = 1{,}728$ cu
+in.
+\begin{gather*}
+36\text{ in} \cdot 18\text{ in} \cdot 18\text{ in} = 11{,}664\text{ cu in} \\
+11{,}664\text{ cu in} \cdot \frac{1\text{ cu ft}}{1{,}728\text{ cu in}} = 6.75\text{ cu ft}
+\end{gather*}
+Either way, the tank is 6.75 cubic feet.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many gallons does the tank hold?
+
+\hspace{1em} 7.48 gallons $=$ 1 cubic foot
+
+The tank holds about $\answer[tolerance=0.5]{50.5}$ gallons.
+
+\begin{solution}
+Using either method, we end up with 6.75 cu ft for the tank. So now we just convert
+this to gallons using the conversion factor:
+\begin{gather*}
+6.75\text{ cu ft} \cdot \frac{7.48\text{ gallons}}{1\text{ cu ft}} = 6.75 \cdot 7.48\text{ gallons} = 50.49\text{ gallons}
+\end{gather*}
+The tank holds about 50.5 gallons.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose a lake has a surface area of about 748 acres and an average depth of about 18
+feet. How many square miles does the lake cover?
+
+\hspace{1em} 43,560 sq ft $=$ 1 acre \qquad 5,280 feet $=$ 1 mile
+
+The lake covers about $\answer[tolerance=0.05]{1.17}$ square miles.
+
+\begin{solution}
+The lake covers 748 acres, so we need to convert this to sq ft. Then we can convert the
+sq ft to sq miles using the fact that 1 sq mi $= 5{,}280^{2} = 27{,}878{,}400$ sq ft.
+\begin{gather*}
+748\text{ acres} \cdot \frac{43{,}560\text{ sq ft}}{1\text{ acre}} = 32{,}582{,}880\text{ sq ft} \\
+32{,}582{,}880\text{ sq ft} \cdot \frac{1\text{ sq mi}}{27{,}878{,}400\text{ sq ft}}
+= \text{about } 1.17\text{ sq miles}
+\end{gather*}
+The lake covers about 1.17 sq miles of area.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many cubic feet are in the lake?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Above we found that the lake covers an area of 32,582,880 sq ft. We know the lake has
+an average depth of 18 ft. If we multiply the sq ft of area by the ft of depth, we'll
+have sq ft $\cdot$ ft $=$ ft $\cdot$ ft $\cdot$ ft $=$ cubic feet, which is what we
+want:
+\begin{gather*}
+32{,}582{,}880\text{ sq ft} \cdot 18\text{ ft} = 586{,}491{,}840\text{ cubic feet}
+\end{gather*}
+The lake is about 586,491,840 cubic feet.
+\end{solution}
+\end{problem}
+
+\section*{Units \& Scaling}
+
+When we scale something down or scale something up, we \textbf{are} changing the
+quantity. For example, if we scale up by 2 something that is 3 ft, the resulting scaled
+up item would be $3\text{ ft} \cdot 2 = 6$ ft. However, if we establish an equivalence
+between two measurements to define our scaling, then we can treat it like a ``normal''
+unit conversion in order to calculate scaled values.
+
+For example, suppose we have something that is 1 ft, and we want to scale it up to 4
+yards. So our equivalence is that 1 ft original $=$ 4 yards scaled. So if we have
+something that is 5 ft long that we want to scale up by the same amount, we can use
+this equivalence to find out how long the 5 foot item should be when scaled up:
+\[
+5\text{ ft original} \cdot \frac{4\text{ yards scaled}}{1\text{ ft original}} \;=\; 20\text{ yards scaled}
+\]
+
+We could also use this if we were trying to scale something down. Suppose we had 100
+yards in our scaled up version. What would be the original length in the un-scaled
+version?
+\[
+100\text{ yards scaled} \cdot \frac{1\text{ ft original}}{4\text{ yards scaled}} \;=\; \text{about } 25\text{ feet original}
+\]
+
+Notice the use of the words ``original'' and ``scaled'' in the work above. This is there
+because we \textbf{are} changing the quantity and so we need to keep track of whether we
+have or want our original quantity or our scaled quantity.
+
+\begin{problem}
+Using this same equivalence (1 ft original $=$ 4 yards scaled): suppose we have
+something that is 2 yards (original) long. How long should the scaled version of this
+be?
+
+The scaled version should be $\answer{24}$ yards.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Our scale information is that 1 ft original $=$ 4 yards scaled. We are asked to scale an
+original length of 2 yards into a scaled value.
+
+First, we need to change our 2 yards original into feet, since our scale relationship
+uses feet for the ``original'' value:
+\begin{gather*}
+2\text{ yards original} \cdot \frac{3\text{ feet original}}{1\text{ yard original}} = 6\text{ feet original}
+\end{gather*}
+Now we can scale our 6 feet original length into a scaled length:
+\begin{gather*}
+6\text{ feet original} \cdot \frac{4\text{ yards scaled}}{1\text{ foot original}} = 24\text{ yards scaled}
+\end{gather*}
+So our 2 yards of the original item would be 24 yards in the scaled item.
+\end{solution}
+\end{problem}
+
+Often scaling information is given as a ratio like ``this is a 1:3 scale'' which means
+the scaled item is about $\tfrac{1}{3}$ smaller in length than the original. If it were
+``this is a 3:1 scale'' this would mean the scaled item is about 3 times longer than
+the original. Meaning the ratio is always presented as ``scale'' : ``real.''
+
+\begin{problem}
+Hot Wheels cars are generally said to be 1:64 scale compared to an actual car. If a Hot
+Wheels car is 1.75 inches long, how long would you expect the real car to be? Give your
+answer in feet.
+
+The real car would be about $\answer[tolerance=0.1]{9.33}$ feet long.
+
+\begin{solution}
+1:64 scale means the real car is about 64 times longer than the Hot Wheels car, or the
+Hot Wheels car is about $\tfrac{1}{64}$th the length of a real car. So if a Hot Wheels
+car is 1.75 inches, we would expect the real car to be 64 times longer:
+\begin{gather*}
+1.75\text{ inches} \cdot 64 = 112\text{ inches} \\
+112\text{ inches} \cdot \frac{1\text{ ft}}{12\text{ inches}} = \frac{112}{12}\text{ feet} = \text{about } 9.33\text{ feet}
+\end{gather*}
+The real car would be about 9.33 feet long.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If the real version of a car has 17-inch tires, a Hot Wheels version would have tires of
+what diameter?
+
+About $\answer[tolerance=0.05]{0.27}$ inches.
+
+\begin{solution}
+With a 1:64 scale, we would expect the Hot Wheels' tires to be $\tfrac{1}{64}$th the
+size of the real tires. So
+\begin{gather*}
+17\text{ inches} \cdot \frac{1}{64} = 0.265625\text{ inches}
+\end{gather*}
+So we would expect the Hot Wheels' tire to be about 0.25 inches (a quarter of an inch)
+in diameter.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Let's see what happens to the area when scaling. Suppose the Hot Wheels car is 1 in
+wide --- keeping the same length of 1.75 in from above --- what area of the ground does
+it cover? Give your answer in square inches.
+
+$\answer[tolerance=0.05]{1.75}$ square inches.
+
+\begin{solution}
+The area would be the length times the width:
+\begin{gather*}
+1\text{ in} \cdot 1.75\text{ in} = 1.75\text{ sq in}
+\end{gather*}
+\end{solution}
+\end{problem}
+
+\begin{problem}
+What area would the real car cover? Give your answer in square INCHES (not square
+feet).
+
+$\answer[tolerance=50]{7168}$ square inches.
+
+\begin{solution}
+We know the real car would be 112 inches long from our earlier work. Now we must find
+how wide it would be by scaling the 1 in width to real length in inches, then multiply
+those inch values to find the area the real car would cover:
+\begin{gather*}
+1\text{ inch} \cdot 64 = 64\text{ inches} \\
+112\text{ inches} \cdot 64\text{ inches} = 7{,}168\text{ square inches}
+\end{gather*}
+\end{solution}
+\end{problem}
+
+\begin{problem}
+How many times bigger is the real car's area compared to the Hot Wheels' area? How does
+this compare to the length scale (1:64)?
+
+$\answer[tolerance=20]{4096}$ times bigger.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The Hot Wheels' area is 1.75 sq in. The real car's area is 7,168 sq in. How many times
+bigger is 7,168 than 1.75? Meaning $1.75 \cdot \text{what} = 7{,}168$, so our ``what''
+is $\dfrac{7{,}168}{1.75} = 4{,}096$ times bigger.
+
+How is this value related to the 1:64 scale? $64 \cdot 64 = 4{,}096$!
+
+\textbf{Note:} This is just like the dimension relationships, where 1 ft $=$ 12 inches
+and 1 sq ft $= 12^{2} = 144$ sq inches. Our length scale factor is 1:64, but our area
+scale factor is $1^{2} : 64^{2} = 1 : 4{,}096$.
+\end{solution}
+\end{problem}
+
+\section*{Scaling \& Dimensions Summary}
+
+\begin{problem}
+Let's summarize what we learned in the previous problems. If something has a scale of
+1:7, then
+
+\begin{itemize}
+\item 1 unit in scale $= \answer{7}$ units in real
+\item 1 square unit in scale $= \answer{49}$ square units in real
+\item 1 cubic unit in scale $= \answer{343}$ cubic units in real
+\end{itemize}
+
+\begin{solution}
+The length factor is 7. Area picks up the square of the length factor, $7^{2} = 49$,
+and volume picks up the cube of it, $7^{3} = 343$.
+\end{solution}
+\end{problem}
+
+Now continue to use this pattern to help you in answers to the following problems.
+
+\begin{problem}
+A DNA helix is approximately 2 nanometers wide. We want to create a scaled up model of
+DNA with a width of 5 cm. What scale would our model be (i.e.\ 100:1? 200:1?)
+
+\hspace{1em} 1 meter $=$ 100 centimeters \qquad 1 meter $= 10^{9}$ nanometers (1 billion)
+
+The scale would be $\answer{25000000}$ : 1.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+5 cm is how many times bigger than 2 nanometers? First we must convert the 5 cm to
+nanometers:
+\begin{gather*}
+5\text{ cm} \cdot \frac{1\text{ meter}}{100\text{ cm}} \cdot \frac{1{,}000{,}000{,}000\text{ nm}}{1\text{ meter}}
+= 50{,}000{,}000\text{ nanometers}
+\end{gather*}
+So 50 million nanometers is how many times bigger than 2 nanometers?
+\begin{gather*}
+\frac{50{,}000{,}000\text{ nm}}{2\text{ nm}} = 25{,}000{,}000\text{ times bigger}
+\end{gather*}
+So our scale (which is always ``scale'' : ``real'') would be 25,000,000 : 1.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+If we want our model to be 0.5 meter tall, how many nanometers of actual DNA will be
+represented in our model?
+
+$\answer{20}$ nanometers.
+
+\begin{solution}
+We can convert the 0.5 meters to nanometers, and then reduce it by a factor of 25
+million to find the ``real'' amount of nanometers:
+\begin{gather*}
+0.5\text{ meters} \cdot \frac{1{,}000{,}000{,}000\text{ nm}}{1\text{ meter}} \cdot \frac{1}{25{,}000{,}000}
+= \frac{500{,}000{,}000}{25{,}000{,}000}\text{ nm} = 20\text{ nm}
+\end{gather*}
+So the 0.5 meter model would show 20 nanometers of actual DNA.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+You've been commissioned to create a statue for a local park. You must first make a
+model version to propose before the real version can be built. Suppose your statue
+model is 18 inches tall and the real statue should be 15 ft tall. What is the scale of
+the model as a ratio (i.e.\ 1:10? 1:25?)
+
+1 : $\answer{10}$
+
+\begin{solution}
+How many times bigger is 15 ft than 18 inches? If we convert the 15 ft to inches and
+then divide by 18 inches, we will find how many times bigger it is:
+\begin{gather*}
+15\text{ ft} \cdot \frac{12\text{ in}}{1\text{ ft}} = 180\text{ inches} \\
+\frac{180\text{ inches}}{18\text{ inches}} = 10
+\end{gather*}
+So the statue will be 10 times bigger, meaning the scale (which is ``scale'' : ``real'')
+would be 1:10.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The podium for your model is 25 square inches. What should the podium for the real
+version of the statue be? Give your answer in square feet.
+
+About $\answer[tolerance=0.5]{17.36}$ square feet.
+
+\begin{solution}
+From noticing in the Hot Wheels example that the area scale was the square of the
+length scale, we can deduce that the area scale here would be $1^{2} : 10^{2} = 1 :
+100$. So if the model podium is 25 sq in, the real podium will be
+\begin{gather*}
+25\text{ sq in} \cdot 100 = 2{,}500\text{ sq inches}.
+\end{gather*}
+Now we convert this to sq ft using the conversion factor 1 sq ft $= 12^{2} = 144$ sq
+inches:
+\begin{gather*}
+2{,}500\text{ sq in} \cdot \frac{1\text{ sq ft}}{144\text{ sq in}} = \text{about } 17.36\text{ sq ft}
+\end{gather*}
+The podium of the real statue would be about 17.36 sq ft.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose you used about 22 lbs of modeling clay to create your model. You find that 1 lb
+of modeling clay is equal to about 16 cubic inches of clay. How much material would you
+need for the real statue?
+
+$\answer[tolerance=1000]{352000}$ cubic inches.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Since the length scale is 1:10, the volume scale will be $1^{3} : 10^{3} = 1 : 1{,}000$.
+Meaning if we know how many cubic inches are in the model, we can find out how many
+cubic units should be in the real statue.
+
+There were 22 lbs of clay used, and 1 lb $=$ 16 cu in. That means
+\begin{gather*}
+22\text{ lbs} \cdot \frac{16\text{ cu in}}{1\text{ lb}} = 352\text{ cu in}
+\end{gather*}
+We need to scale this up by 1,000, so we will need
+\begin{gather*}
+352\text{ cu in} \cdot 1{,}000 = 352{,}000\text{ cu inches}
+\end{gather*}
+So we will need 352,000 cubic inches of material for the real statue.
+\end{solution}
+\end{problem}
+
+\section*{Non-Standard Unit Equivalences}
+
+You probably think or use a sort of unit equivalence almost every day. You do this in
+the form of \textbf{price}. Almost everything has a price, and the price can be thought
+of as establishing an equivalence between the item or service and the \$ units. For
+example, if gas is \$2.80 per gallon, this is really establishing the equivalence:
+\$2.80 $=$ 1 gallon. We can then use this to convert the amount of gallons put in a car
+into a cost. If you have a 15 gallon tank which you fill at \$2.80 per gallon, you are
+converting 15 gallons into dollars using this equivalence:
+\[
+15\text{ gallons} \cdot \frac{\$2.80}{1\text{ gallon}} \;=\; \$42
+\]
+
+We can think of other relationships as equivalences as well. For example, in a previous
+problem, we are told that 1 lb of modeling clay is about 16 cubic inches of clay.
+Pounds and cubic inches are not measuring the same thing: pounds measure weight, cubic
+inches measure volume. So generally, we cannot convert pounds to cubic inches. However,
+when we know a specific substance, in this example, modeling clay, we can establish a
+relationship between these two units.
+
+\begin{problem}
+In the U.S.\ we sell gas by the gallon, but most other countries sell and price it by
+the liter. If you have a 15.4 gal tank in your car, how many liters is that?
+
+\hspace{1em} 1 gal $=$ 3.78 L \qquad \$1 US $=$ \$1.38 CA
+
+About $\answer[tolerance=0.5]{58.2}$ liters.
+
+\begin{solution}
+We want to convert the 15.4 gallons into liters, using the fact that 1 gal $=$ 3.78 L:
+\begin{gather*}
+15.4\text{ gal} \cdot \frac{3.78\text{ L}}{1\text{ gal}} = 58.212\text{ L}
+\end{gather*}
+Hence, the tank holds about 58.2 L of gas.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The average price per gallon is around \$3.16. How much would it cost to fill up the
+15.4 gal tank?
+
+About \$$\answer[tolerance=0.5]{48.66}$.
+
+\begin{solution}
+We want to ``convert'' the 15.4 gallons into dollars, using the fact that 1 gal $=$
+\$3.16:
+\begin{gather*}
+15.4\text{ gal} \cdot \frac{\$3.16}{1\text{ gal}} = \$48.664
+\end{gather*}
+Hence, filling the tank will cost about \$48.66.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The average price for gas in Canada is around \$1.55 CA per liter. How much would it
+cost to fill up the 15.4 gal tank?
+
+About \$$\answer[tolerance=1]{90.21}$ CA.
+
+\begin{solution}
+We want to convert the 15.4 gallons, but measured in liters, into CA\$, using the fact
+that 1 L $=$ \$1.55 CA. We found that 15.4 gal $=$ 58.2 L, so we will convert that into
+\$CA:
+\begin{gather*}
+58.2\text{ L} \cdot \frac{\$1.55\text{ CA}}{1\text{ L}} = \$90.21\text{ CA}
+\end{gather*}
+Hence, filling the tank would cost about \$90.21 CA.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Convert the \$1.55 CA per liter into \$US per gallon. Then briefly explain why it is
+important to convert both values (\$CA to \$US and liters to gallons) to compare gas
+prices between here (the US) and Canada.
+
+About \$$\answer[tolerance=0.15]{4.25}$ US per gallon.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+There are two ways to think about this.
+
+\textbf{Method 1: convert the \$ amounts and the gal/L amounts separately.}
+$\$1.55$ CA per liter is $\dfrac{\$1.55\text{ CA}}{1\text{ L}}$, so we can convert
+\$1.55 CA into \$US and convert 1 L into gallons, then divide those values.
+\begin{gather*}
+\$1.55\text{ CA} \cdot \frac{\$1\text{ US}}{\$1.38\text{ CA}} = \$1.1232\ldots\text{ US} \\
+1\text{ L} \cdot \frac{1\text{ gal}}{3.78\text{ L}} = 0.26455\text{ gal} \\
+\frac{\$1.12\text{ US}}{0.265\text{ gal}} = \text{about } \$4.23\text{ per gallon}
+\end{gather*}
+
+\textbf{Method 2: convert both at the same time.} Since we know \$1 US $=$ \$1.38 CA and
+1 gal $=$ 3.78 L, we can convert the units in the \$1.55 CA per liter:
+\begin{gather*}
+\frac{\$1.55\text{ CA}}{1\text{ L}} \cdot \frac{\$1\text{ US}}{\$1.38\text{ CA}} \cdot \frac{3.78\text{ L}}{1\text{ gal}}
+= \frac{\$(1.55 \cdot 3.78)\text{ US}}{1.38\text{ gal}} = \$4.25\text{ US per gal}
+\end{gather*}
+
+Both values have to be converted because a price is a ratio of two units. Changing only
+the currency, or only the volume, still leaves you comparing two quantities measured
+differently --- the comparison is only meaningful once both the numerator and the
+denominator are in the same units.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+The Nisqually Glacier is a glacier on Mount Rainier in Mount Rainier National Park.
+According to the National Park Service website:
+
+\begin{quote}
+``In 1857, [August] Kautz wrote in his journal that the terminus [of the Nisqually
+glacier] reached a narrow rock channel located underneath the present Glacier bridge on
+the road to Paradise\ldots{} By the 1950s\ldots{} the glacier had retreated nearly 1.2
+miles (2 km) up past a curve in the valley.''
+\end{quote}
+
+Estimate the glacier's retreat per year. First determine it in miles per year, then
+determine it in feet per year.
+
+\hspace{1em} 1 mile $=$ 5,280 ft
+
+About $\answer[tolerance=3]{63}$ feet per year.
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+The glacier retreated about 1.2 mi from 1857 to the 1950s, which is about 100 years. So
+to find the miles per year, we divide the 1.2 miles of retreat by the 100 years:
+\begin{gather*}
+\frac{1.2\text{ mi}}{100\text{ years}} = \frac{0.012\text{ mi}}{1\text{ year}}
+\end{gather*}
+To find out how many feet per year this would be, we convert the 0.012 miles to feet:
+\begin{gather*}
+\frac{0.012\text{ mi}}{1\text{ year}} \cdot \frac{5{,}280\text{ ft}}{1\text{ mi}}
+= \frac{63.36\text{ ft}}{1\text{ year}} = \text{about 63 ft per year}
+\end{gather*}
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Why would we prefer to have the amount in feet per year instead of miles per year?
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Because most people do not have a good idea of how much 0.012 miles is, but we do have
+an idea of how much 63 feet is. Since 0.012 miles $=$ 63 feet, they represent the same
+length, but if we want someone to quickly understand how much this is, for a value like
+this we more often measure it in feet, and so we have a better understanding of it in
+feet units rather than mile units.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Now determine the glacier's retreat in inches per day.
+
+About $\answer[tolerance=0.5]{2}$ inches per day.
+
+\begin{solution}
+To answer this, we must convert the 63 feet into inches, and the 1 year into days, and
+then divide those values, so that we have inches per 1 day:
+\begin{gather*}
+\frac{63\text{ ft}}{1\text{ year}} \cdot \frac{12\text{ in}}{1\text{ ft}} \cdot \frac{1\text{ year}}{365\text{ days}}
+= \frac{2.0712\ldots\text{ in}}{1\text{ day}} = \text{about 2 inches per day}
+\end{gather*}
+The glacier retreats an average of 2 inches per day.
+
+\textbf{Note:} You could also do these conversions (ft to inches, and years to days)
+separately, like we did in Method 1 of the gas price problem.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Which is a ``better'' way of describing the glacier's retreat: feet per year or inches
+per day? Support your choice based on math work and based on how a glacier might
+actually retreat in the ``real world.''
+
+\begin{freeResponse}
+\end{freeResponse}
+
+\begin{solution}
+Based on the math, both descriptions are about the same. You could say the 63 ft/year is
+a bit more accurate, as we did some more rounding to get the 2 inches per day and more
+rounding gets us further from the ``true'' value. However, mathematically, these are
+essentially the same.
+
+Based on how a glacier might actually retreat in the ``real world,'' the 63 ft per year
+would probably be preferable over the 2 inches per day value. If you actually stood at
+the edge of the glacier for a day, you would not see 2 inches of the glacier melt away.
+In the summer, the glacier may be melting more than 2 inches per day, and in the winter
+the glacier might actually gain some length from more snow and freezing temperatures,
+but from the start to the finish of a year you would see it receding. Even from year to
+year there would be variation, but the 63 ft per year would give a better idea of what
+is happening with the glacier.
+\end{solution}
+\end{problem}
+
+\end{document}
