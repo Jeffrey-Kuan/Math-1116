@@ -218,7 +218,11 @@ which says we remove $16.6\%$ of the dice on each roll, on average.
 
 \subsection*{The other dice}
 
-Now let's look at the data for the other dice. Record your group's data:
+Now let's look at the data for the other dice.
+
+\begin{problem}
+Fill in the $R = e^{b}$ column for the 4-, 8-, and 12-sided dice. The 6-sided row is
+completed for you as a worked example.
 
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|}
@@ -235,6 +239,23 @@ Dice & Model as $y = a \cdot e^{bx}$ & Actual starting \# & $R = e^{b}$ & Model 
 \hline
 \end{tabular}
 \end{center}
+
+\begin{solution}
+Each $R$ is just $e$ raised to that model's $b$:
+\begin{align*}
+\text{4-sided:} \quad & R = e^{-0.315} = 0.7298\ldots \approx 0.73 \\
+\text{8-sided:} \quad & R = e^{-0.152} = 0.8590\ldots \approx 0.86 \\
+\text{12-sided:} \quad & R = e^{-0.0899} = 0.9140\ldots \approx 0.914
+\end{align*}
+Checking the worked row the same way, $e^{-0.181} = 0.8344\ldots \approx 0.834$, which
+matches.
+
+Notice the ordering: the 4-sided dice have the smallest $R$ and the 12-sided the
+largest. That is what you should expect --- a 4-sided die has a $1/4$ chance of showing
+a ``1'' and being removed each roll, so those piles shrink fastest, while a 12-sided die
+only has a $1/12$ chance, so more of it survives each round.
+\end{solution}
+\end{problem}
 
 \begin{problem}
 What does the $x$-value represent for all of the models?
